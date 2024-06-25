@@ -1,0 +1,1 @@
+should_i_try_to_check_new_player = true;
