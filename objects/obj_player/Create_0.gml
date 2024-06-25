@@ -13,10 +13,6 @@ player_values = {
 	spd : 5,
 }
 
-global.player_data = {
-	
-}
-
 spd = 5;
 player_state = PLAYER_STATES.STAND_FRONT;
 
@@ -33,3 +29,5 @@ move_y = 0;
 
 last_x = x;
 last_y = y;
+
+image_speed = 0.1;

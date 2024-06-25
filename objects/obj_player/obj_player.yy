@@ -37,10 +37,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
+  "spriteId":null,
+  "spriteMaskId":{
     "name":"spr_player_front",
     "path":"sprites/spr_player_front/spr_player_front.yy",
   },
-  "spriteMaskId":null,
   "visible":true,
 }

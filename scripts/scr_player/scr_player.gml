@@ -19,47 +19,35 @@ function movement_animation () {
 			move_y *=  1/sqrt(2);
 		}
 		player_state = PLAYER_STATES.WALK_SIDE;
-		sprite_index = spr_player_side_walking;
 		image_xscale = sign(move_x);
 	} else {
 		if (move_y > 0) {
 			path_delete(my_path);
 			my_path = path_add();
-			image_xscale = 1;
 			player_state = PLAYER_STATES.WALK_FRONT;
-			sprite_index = spr_player_front_walking;
 		} else {
 			if (move_y < 0) {
 				path_delete(my_path);
 				my_path = path_add();
-				image_xscale = 1;
 				player_state = PLAYER_STATES.WALK_BACK;
-				sprite_index = spr_player_back_walking;
 			} else {
 				if (last_y > y) {
-					image_xscale = 1;
-					sprite_index = spr_player_back_walking;
 					player_state = PLAYER_STATES.WALK_BACK;
 				} else {
 					if (last_y < y) {
-						image_xscale = 1;
-						sprite_index = spr_player_front_walking;
 						player_state = PLAYER_STATES.WALK_FRONT;
 					} else {
 						if (last_x != x) {
 							player_state = PLAYER_STATES.WALK_SIDE;
-							sprite_index = spr_player_side_walking;
 							image_xscale = sign(x - last_x);
 						} else {
-							if (player_state == PLAYER_STATES.WALK_FRONT) {
-								image_xscale = 1;
-								sprite_index = spr_player_front;
+							if (player_state == PLAYER_STATES.WALK_FRONT || player_state == PLAYER_STATES.STAND_FRONT) {
+								player_state = PLAYER_STATES.STAND_FRONT;
 							} else {
-								if (player_state == PLAYER_STATES.WALK_BACK) {
-									image_xscale = 1;
-									sprite_index = spr_player_back;
+								if (player_state == PLAYER_STATES.WALK_BACK || player_state == PLAYER_STATES.STAND_BACK) {
+									player_state = PLAYER_STATES.STAND_BACK;
 								} else {
-									sprite_index = spr_player_side;
+									player_state = PLAYER_STATES.STAND_SIDE;
 								}
 							}
 						}
