@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "dgram": "^1.0.1"
+  }
+}
