@@ -1,6 +1,20 @@
 function input_check(){
 	move_x = (keyboard_check(ord("D")) - keyboard_check(ord("A"))) * spd;
 	move_y = (keyboard_check(ord("S")) - keyboard_check(ord("W"))) * spd;
+	if (keyboard_check_pressed(ord("K"))) {
+		if (hair_style_selected < 26) {
+			hair_style_selected++;
+		} else {
+			hair_style_selected = 0;
+		}
+	}
+	if (keyboard_check_pressed(ord("J"))) {
+		if (hair_color_selected < 7) {
+			hair_color_selected++;
+		} else {
+			hair_color_selected = 0;
+		}
+	}
 	if (move_x == 0) {
 		move_x = (keyboard_check(vk_right) - keyboard_check(vk_left)) * spd;
 	}

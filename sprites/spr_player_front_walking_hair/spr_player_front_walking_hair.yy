@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"walking",
-    "path":"folders/Sprites/player/player_front/walking.yy",
+    "name":"hair_styles",
+    "path":"folders/Sprites/player/player_front/walking/hair_styles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

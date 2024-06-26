@@ -2,10 +2,10 @@
   "$GMSprite":"",
   "%Name":"spr_join_button",
   "bboxMode":0,
-  "bbox_bottom":45,
-  "bbox_left":13,
-  "bbox_right":53,
-  "bbox_top":21,
+  "bbox_bottom":43,
+  "bbox_left":27,
+  "bbox_right":108,
+  "bbox_top":2,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -13,11 +13,10 @@
   "For3D":false,
   "frames":[
     {"$GMSpriteFrame":"","%Name":"8fd89bd0-4542-49e4-8928-707480bceaa3","name":"8fd89bd0-4542-49e4-8928-707480bceaa3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"75fbaf9e-b3e7-4f92-9e61-864d4d2a3cd2","name":"75fbaf9e-b3e7-4f92-9e61-864d4d2a3cd2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":64,
+  "height":48,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"44b0c127-3e28-423d-8033-575c6fb558f5","blendMode":0,"displayName":"default","isLocked":false,"name":"44b0c127-3e28-423d-8033-575c6fb558f5","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -26,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"buttons",
+    "path":"folders/Sprites/buttons.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -50,7 +49,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":2.0,
+    "length":1.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -72,9 +71,6 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8fd89bd0-4542-49e4-8928-707480bceaa3","path":"sprites/spr_join_button/spr_join_button.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"6c21d481-586a-4ea5-a210-3a96cfdb22fd","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"75fbaf9e-b3e7-4f92-9e61-864d4d2a3cd2","path":"sprites/spr_join_button/spr_join_button.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"5d416cad-8cf1-40d4-9ed0-a11e2d38238e","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -90,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":64,
+  "width":128,
 }
