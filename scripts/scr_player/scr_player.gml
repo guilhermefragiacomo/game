@@ -1,18 +1,33 @@
 function input_check(){
 	move_x = (keyboard_check(ord("D")) - keyboard_check(ord("A"))) * spd;
 	move_y = (keyboard_check(ord("S")) - keyboard_check(ord("W"))) * spd;
+	
 	if (keyboard_check_pressed(ord("K"))) {
-		if (hair_style_selected < 26) {
+		if (hair_style_selected < array_length(hair_styles_front_walk)-1) {
 			hair_style_selected++;
 		} else {
 			hair_style_selected = 0;
 		}
 	}
 	if (keyboard_check_pressed(ord("J"))) {
-		if (hair_color_selected < 7) {
+		if (hair_color_selected < array_length(hair_colors)-1) {
 			hair_color_selected++;
 		} else {
 			hair_color_selected = 0;
+		}
+	}
+	if (keyboard_check_pressed(ord("U"))) {
+		if (skin_color_selected < array_length(skin_colors)-1) {
+			skin_color_selected++;
+		} else {
+			skin_color_selected = 0;
+		}
+	}
+	if (keyboard_check_pressed(ord("I"))) {
+		if (eye_color_selected < array_length(eye_colors)-1) {
+			eye_color_selected++;
+		} else {
+			eye_color_selected = 0;
 		}
 	}
 	if (move_x == 0) {
@@ -70,7 +85,6 @@ function movement_animation () {
 			}
 		}	
 	}
-	
 	collision();
 }
 
