@@ -50,40 +50,28 @@ function movement_animation () {
 		player_state = PLAYER_STATES.WALK_SIDE;
 		image_xscale = sign(move_x);
 	} else {
-		if (move_y > 0) {
-			path_delete(my_path);
-			my_path = path_add();
-			player_state = PLAYER_STATES.WALK_FRONT;
+		if (last_y > y) {
+			player_state = PLAYER_STATES.WALK_BACK;
 		} else {
-			if (move_y < 0) {
-				path_delete(my_path);
-				my_path = path_add();
-				player_state = PLAYER_STATES.WALK_BACK;
+			if (last_y < y) {
+				player_state = PLAYER_STATES.WALK_FRONT;
 			} else {
-				if (last_y > y) {
-					player_state = PLAYER_STATES.WALK_BACK;
+				if (last_x != x) {
+					player_state = PLAYER_STATES.WALK_SIDE;
+					image_xscale = sign(x - last_x);
 				} else {
-					if (last_y < y) {
-						player_state = PLAYER_STATES.WALK_FRONT;
+					if (player_state == PLAYER_STATES.WALK_FRONT || player_state == PLAYER_STATES.STAND_FRONT) {
+						player_state = PLAYER_STATES.STAND_FRONT;
 					} else {
-						if (last_x != x) {
-							player_state = PLAYER_STATES.WALK_SIDE;
-							image_xscale = sign(x - last_x);
+						if (player_state == PLAYER_STATES.WALK_BACK || player_state == PLAYER_STATES.STAND_BACK) {
+							player_state = PLAYER_STATES.STAND_BACK;
 						} else {
-							if (player_state == PLAYER_STATES.WALK_FRONT || player_state == PLAYER_STATES.STAND_FRONT) {
-								player_state = PLAYER_STATES.STAND_FRONT;
-							} else {
-								if (player_state == PLAYER_STATES.WALK_BACK || player_state == PLAYER_STATES.STAND_BACK) {
-									player_state = PLAYER_STATES.STAND_BACK;
-								} else {
-									player_state = PLAYER_STATES.STAND_SIDE;
-								}
-							}
+							player_state = PLAYER_STATES.STAND_SIDE;
 						}
 					}
 				}
 			}
-		}	
+		}
 	}
 	collision();
 }
