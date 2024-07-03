@@ -2,9 +2,7 @@
   "$GMTileSet":"",
   "%Name":"tileset_grass",
   "autoTileSets":[
-    {"$GMAutoTileSet":"","%Name":"autotile_1","closed_edge":false,"name":"autotile_1","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[
-        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-      ],},
+    {"$GMAutoTileSet":"","%Name":"autotile_1","closed_edge":false,"name":"autotile_1","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[6,35,34,15,29,12,33,16,28,27,19,17,20,22,23,5,],},
   ],
   "macroPageTiles":{
     "SerialiseHeight":0,
@@ -12,9 +10,9 @@
     "TileSerialiseData":[],
   },
   "name":"tileset_grass",
-  "out_columns":5,
-  "out_tilehborder":2,
-  "out_tilevborder":2,
+  "out_columns":6,
+  "out_tilehborder":0,
+  "out_tilevborder":0,
   "parent":{
     "name":"Conjuntos de tiles",
     "path":"folders/Conjuntos de tiles.yy",
@@ -22,8 +20,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"spr_grass_tileset_new",
-    "path":"sprites/spr_grass_tileset_new/spr_grass_tileset_new.yy",
+    "name":"spr_dirt_tileset",
+    "path":"sprites/spr_dirt_tileset/spr_dirt_tileset.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -31,7 +29,9 @@
     "path":"texturegroups/Default",
   },
   "tileAnimation":{
-    "FrameData":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,],
+    "FrameData":[
+      0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,
+    ],
     "SerialiseFrameCount":1,
   },
   "tileAnimationFrames":[],
@@ -42,5 +42,5 @@
   "tileWidth":64,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":24,
+  "tile_count":36,
 }

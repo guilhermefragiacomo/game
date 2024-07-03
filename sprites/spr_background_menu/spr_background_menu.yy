@@ -2,9 +2,9 @@
   "$GMSprite":"",
   "%Name":"spr_background_menu",
   "bboxMode":0,
-  "bbox_bottom":179,
+  "bbox_bottom":719,
   "bbox_left":0,
-  "bbox_right":319,
+  "bbox_right":1279,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":180,
+  "height":720,
   "HTile":false,
   "layers":[
     {"$GMImageFolderLayer":"","%Name":"4e783feb-4d5b-40b8-b526-2f5b11df0e65","blendMode":0,"displayName":"dwa","isLocked":false,"layers":[
@@ -99,5 +99,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":320,
+  "width":1280,
 }

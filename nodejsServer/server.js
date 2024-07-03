@@ -3,7 +3,7 @@ var dgram = require("dgram");
 var server = dgram.createSocket({ type: "udp4", reuseAddr: true });
 
 var data;
-var hosts = [[new player(0, 0, 0, 0, 0)]];
+var hosts = [[new player(0, 0, 0, 0, 0)], [new player(0, 0, 0, 0, 0)]];
 
 const MSG_TYPE = {
     CREATE_HOST: 0,
@@ -53,6 +53,9 @@ server.on("message", function (msg, rinfo) {
             break;
         case MSG_TYPE.CHECK_DISCONNECTED:
             check_disconnected(data, rinfo);
+            break;
+        case MSG_TYPE.REMOVE_PLAYER:
+            remove_player(data, rinfo);
             break;
         default:
             break;
@@ -142,7 +145,13 @@ function check_disconnected(data, rinfo) {
     console.table(hosts);
 }
 function remove_player(data, rinfo) {
-
+    for (var i = 0; i < hosts[data.host_number].length; i++) {
+        if (hosts[data.host_number][i].player_number == data.player_number) {
+            hosts[data.host_number][i].connected = false;
+        }
+    }
+    data.type = MSG_TYPE.CHECK_DISCONNECTED;
+    check_disconnected(data, rinfo);
 }
 
 server.bind(8080, "127.0.0.1");

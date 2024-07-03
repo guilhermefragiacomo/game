@@ -4,8 +4,8 @@
   "bboxMode":0,
   "bbox_bottom":63,
   "bbox_left":0,
-  "bbox_right":63,
-  "bbox_top":12,
+  "bbox_right":83,
+  "bbox_top":4,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -23,7 +23,7 @@
   ],
   "name":"spr_bush",
   "nineSlice":null,
-  "origin":7,
+  "origin":9,
   "parent":{
     "name":"bushes",
     "path":"folders/Sprites/bushes.yy",
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":64,
+  "width":96,
 }

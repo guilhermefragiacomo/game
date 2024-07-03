@@ -50,13 +50,13 @@ function movement_animation () {
 		player_state = PLAYER_STATES.WALK_SIDE;
 		image_xscale = sign(move_x);
 	} else {
-		if (last_y > y) {
+		if (last_y > y || move_y < 0) {
 			player_state = PLAYER_STATES.WALK_BACK;
 		} else {
-			if (last_y < y) {
+			if (last_y < y || move_y > 0) {
 				player_state = PLAYER_STATES.WALK_FRONT;
 			} else {
-				if (last_x != x) {
+				if (last_x != x || move_x != 0) {
 					player_state = PLAYER_STATES.WALK_SIDE;
 					image_xscale = sign(x - last_x);
 				} else {
