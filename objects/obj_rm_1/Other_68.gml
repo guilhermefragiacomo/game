@@ -18,6 +18,7 @@ if (async_load[? "size"] > 0) {
 					for (var _k = 0; _k < _number_of_player_already_in_level; ++_k) {
 					    var _ext_player = instance_find(obj_player, _k);
 						if (_ext_player.player_number == ds_map_find_value(_player, "player_number")) {
+							show_debug_message("\n\nesse é o cara que eu apaguei da existencia: " + string(_ext_player.player_number) + "\n");
 							instance_destroy(_ext_player);
 							_number_of_player_already_in_level = instance_number(obj_player);
 						}

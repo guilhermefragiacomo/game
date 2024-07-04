@@ -3,6 +3,7 @@ draw_text(x,y, "player " + string(player_number));
 
 switch (player_state) {
 	case PLAYER_STATES.STAND_FRONT:
+		draw_sprite_ext(spr_player_front_shade,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_boots,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_default,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_eye_colorless,0,x,y,1,1,0,eye_colors[eye_color_selected],1);

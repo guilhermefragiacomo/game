@@ -139,6 +139,7 @@ function check_disconnected(data, rinfo) {
     server.send(JSON.stringify(data), rinfo.port, rinfo.address);
     for (var i = 0; i < hosts[data.host_number].length; i++) {
         if (!hosts[data.host_number][i].connected) {
+            console.log("\n\n esse é o brother que eu apaguei: " + hosts[data.host_number][i].player_number + "\n");
             hosts[data.host_number].splice(i, 1);
         }
     }
@@ -148,8 +149,10 @@ function remove_player(data, rinfo) {
     for (var i = 0; i < hosts[data.host_number].length; i++) {
         if (hosts[data.host_number][i].player_number == data.player_number) {
             hosts[data.host_number][i].connected = false;
+            console.log("\n\nesse é o cara que eu desconectei: " + hosts[data.host_number][i].player_number + "\n");
         }
     }
+    console.table(hosts);
     data.type = MSG_TYPE.CHECK_DISCONNECTED;
     check_disconnected(data, rinfo);
 }
