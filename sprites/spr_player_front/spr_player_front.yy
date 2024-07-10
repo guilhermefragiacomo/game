@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":32,
+  "height":128,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"a0552a24-46ec-4579-8f5d-1f77327ccdbc","blendMode":0,"displayName":"hair","isLocked":false,"name":"a0552a24-46ec-4579-8f5d-1f77327ccdbc","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -101,8 +101,8 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":8,
-    "yorigin":31,
+    "xorigin":32,
+    "yorigin":124,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
@@ -112,5 +112,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":24,
+  "width":96,
 }

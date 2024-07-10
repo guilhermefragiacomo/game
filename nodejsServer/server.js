@@ -3,7 +3,7 @@ var dgram = require("dgram");
 var server = dgram.createSocket({ type: "udp4", reuseAddr: true });
 
 var data;
-var hosts = [[new player(0, 0, 0, 0, 0)], [new player(0, 0, 0, 0, 0)]];
+var hosts = [[new player(0, 0, 0, 0, 0, false)], [new player(0, 0, 0, 0, 0, false)]];
 
 const MSG_TYPE = {
     CREATE_HOST: 0,
@@ -13,7 +13,7 @@ const MSG_TYPE = {
     GET_HOSTS: 4,
     GET_PLAYER_STAT: 5,
     GET_NEW_PLAYER: 6,
-    REMOVE_PLAYER: 7,
+    DISCONNECT: 7,
     CHECK_DISCONNECTED: 8
 }
 
@@ -26,6 +26,9 @@ function player(player_number, x, y, move_x, move_y, connected) {
     this.connected = connected;
 }
 
+server.on("listening", function () {
+    disconnected_players();
+});
 server.on("message", function (msg, rinfo) {
     data = JSON.parse(msg);
     console.log("< " + String(msg));
@@ -51,11 +54,8 @@ server.on("message", function (msg, rinfo) {
         case MSG_TYPE.GET_NEW_PLAYER:
             get_players(data, rinfo);
             break;
-        case MSG_TYPE.CHECK_DISCONNECTED:
-            check_disconnected(data, rinfo);
-            break;
-        case MSG_TYPE.REMOVE_PLAYER:
-            remove_player(data, rinfo);
+        case MSG_TYPE.DISCONNECT:
+            disconnect_player(data, rinfo);
             break;
         default:
             break;
@@ -107,54 +107,67 @@ function join_host(data, rinfo) {
             number_of_player = hosts[data.host_number][i].player_number;
         }
     }
-    hosts[data.host_number].push(new player(number_of_player + 1, 250, 680, 0, 0));
+    hosts[data.host_number].push(new player(number_of_player + 1, 250, 680, 0, 0, true));
     data.player_number = number_of_player + 1;
     server.send(JSON.stringify(data), rinfo.port, rinfo.address);
     console.table(hosts);
+    for (var i = 0; i < hosts.length; i++) {
+        for (var j = 0; j < hosts[i].length; j++) {
+            console.log("host - " + i + " player - " + hosts[i][j].player_number)
+        }
+    }
 }
 
 function get_player_stat(data, rinfo) {
-    var o = false;
     for (var i = 0; i < hosts[data.host_number].length; i++) {
         if (hosts[data.host_number][i].player_number == data.player_number) {
             data.player_stat = hosts[data.host_number][i];
-            console.log("--=-=-= " + hosts[data.host_number][i].player_number);
-            o = true;
         }
     }
-    if (o) {
-        server.send(JSON.stringify(data), rinfo.port, rinfo.address);
-    }
+    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
 }
 
 function get_players(data, rinfo) {
-    for (var i = 0; i < hosts[data.host_number].length; i++) {
-        hosts[data.host_number][i].connected = false;
-    }
     data.players = hosts[data.host_number];
     server.send(JSON.stringify(data), rinfo.port, rinfo.address);
 }
-function check_disconnected(data, rinfo) {
-    data.players = hosts[data.host_number];
-    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+function disconnect_player(data, rinfo) {
     for (var i = 0; i < hosts[data.host_number].length; i++) {
-        if (!hosts[data.host_number][i].connected) {
-            console.log("\n\n esse é o brother que eu apaguei: " + hosts[data.host_number][i].player_number + "\n");
+        if (hosts[data.host_number][i].player_number == data.player_number) {
+            console.log("\n\nesse é o cara que eu desconectei: " + hosts[data.host_number][i].player_number + "\n");
             hosts[data.host_number].splice(i, 1);
         }
     }
     console.table(hosts);
-}
-function remove_player(data, rinfo) {
-    for (var i = 0; i < hosts[data.host_number].length; i++) {
-        if (hosts[data.host_number][i].player_number == data.player_number) {
-            hosts[data.host_number][i].connected = false;
-            console.log("\n\nesse é o cara que eu desconectei: " + hosts[data.host_number][i].player_number + "\n");
+    for (var i = 0; i < hosts.length; i++) {
+        for (var j = 0; j < hosts[i].length; j++) {
+            console.log("host - " + i + " player - " + hosts[i][j].player_number)
         }
     }
-    console.table(hosts);
-    data.type = MSG_TYPE.CHECK_DISCONNECTED;
-    check_disconnected(data, rinfo);
+    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+}
+
+async function disconnected_players() {
+    await sleep(5000);
+    for (var i = 0; i < hosts.length; i++) {
+        for (var j = 0; j < hosts[i].length; j++) {
+            hosts[i][j].connected = false;
+        }
+    }
+    await sleep(5000);
+    for (var i = 0; i < hosts.length; i++) {
+        for (var j = 0; j < hosts[i].length; j++) {
+            if (!hosts[i][j].connected) {
+                hosts[i].splice(i, 1);
+            }
+        }
+    }
+
+    disconnected_players();
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 server.bind(8080, "127.0.0.1");

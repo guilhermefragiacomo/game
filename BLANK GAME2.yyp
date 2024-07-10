@@ -140,6 +140,7 @@
     {"id":{"name":"spr_player_front_default","path":"sprites/spr_player_front_default/spr_player_front_default.yy",},},
     {"id":{"name":"spr_player_front_eye_colorless","path":"sprites/spr_player_front_eye_colorless/spr_player_front_eye_colorless.yy",},},
     {"id":{"name":"spr_player_front_eye","path":"sprites/spr_player_front_eye/spr_player_front_eye.yy",},},
+    {"id":{"name":"spr_player_front_hair_styles_shade","path":"sprites/spr_player_front_hair_styles_shade/spr_player_front_hair_styles_shade.yy",},},
     {"id":{"name":"spr_player_front_hair_styles","path":"sprites/spr_player_front_hair_styles/spr_player_front_hair_styles.yy",},},
     {"id":{"name":"spr_player_front_hair","path":"sprites/spr_player_front_hair/spr_player_front_hair.yy",},},
     {"id":{"name":"spr_player_front_leggings","path":"sprites/spr_player_front_leggings/spr_player_front_leggings.yy",},},

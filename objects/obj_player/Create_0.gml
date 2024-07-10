@@ -163,4 +163,6 @@ move_y = 0;
 last_x = x;
 last_y = y;
 
+connected = true;
+
 image_speed = 0.1;

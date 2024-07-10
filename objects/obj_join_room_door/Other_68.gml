@@ -10,7 +10,6 @@ if (async_load[? "size"] > 0) {
 		global.player_number = ds_map_find_value(_response, "player_number");
 		global.host_number = ds_map_find_value(_response, "host_number");
 		did_we_joined = true;
-		show_debug_message("\n\n\n\nhost - " + string(global.host_number) + " player_number - "+ string(global.player_number) + " sala - " + string(room_to_go) + " "  + string(rm_1) + " " + string(rm_2));
 		room_goto(room_to_go);
 	}
 }

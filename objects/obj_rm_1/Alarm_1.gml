@@ -1,1 +1,0 @@
-check_for_disconnected_players = true;
