@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_hosts_button",
-    "path":"sprites/spr_hosts_button/spr_hosts_button.yy",
+    "name":"spr_hosts_button_old",
+    "path":"sprites/spr_hosts_button_old/spr_hosts_button_old.yy",
   },
   "spriteMaskId":null,
   "visible":true,

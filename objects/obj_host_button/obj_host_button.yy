@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_host_button",
-    "path":"sprites/spr_host_button/spr_host_button.yy",
+    "name":"spr_host_butto_old",
+    "path":"sprites/spr_host_butto_old/spr_host_butto_old.yy",
   },
   "spriteMaskId":null,
   "visible":true,

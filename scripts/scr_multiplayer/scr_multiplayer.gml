@@ -4,7 +4,7 @@ function send_player_over_udp(_port, _size, _map, _type, _ip = "127.0.0.1"){
 	
 	ds_map_add(_map, "type", _type);
 	var _data_json = json_encode(_map);
-	show_debug_message("> " + _data_json);
+	//show_debug_message("> " + _data_json);
 	ds_map_destroy(_map);
 	
 	buffer_seek(_player_buffer, buffer_seek_start, 0);

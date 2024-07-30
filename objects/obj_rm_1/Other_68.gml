@@ -6,7 +6,7 @@ if (async_load[? "size"] > 0) {
 	var _player;
 	
 	var _response = json_decode(_message_id);
-	
+	/*
 	if (ds_map_find_value(_response, "type") == MSG_TYPE.CHECK_DISCONNECTED) {
 		show_debug_message("< " + _message_id);
 		var _players = ds_map_find_value(_response, "players");
@@ -27,6 +27,7 @@ if (async_load[? "size"] > 0) {
 			}
 		}
 	}
+	*/
 	
 	if (ds_map_find_value(_response, "type") == MSG_TYPE.GET_NEW_PLAYER) {
 		show_debug_message("< " + _message_id);

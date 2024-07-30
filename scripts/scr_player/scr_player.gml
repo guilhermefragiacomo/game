@@ -3,28 +3,28 @@ function input_check(){
 	move_y = (keyboard_check(ord("S")) - keyboard_check(ord("W"))) * spd;
 	
 	if (keyboard_check_pressed(ord("K"))) {
-		if (hair_style_selected < array_length(hair_styles_front_walk)-1) {
+		if (hair_style_selected < array_length(global.hair_styles_front_walk)-1) {
 			hair_style_selected++;
 		} else {
 			hair_style_selected = 0;
 		}
 	}
 	if (keyboard_check_pressed(ord("J"))) {
-		if (hair_color_selected < array_length(hair_colors)-1) {
+		if (hair_color_selected < array_length(global.hair_colors)-1) {
 			hair_color_selected++;
 		} else {
 			hair_color_selected = 0;
 		}
 	}
 	if (keyboard_check_pressed(ord("U"))) {
-		if (skin_color_selected < array_length(skin_colors)-1) {
+		if (skin_color_selected < array_length(global.skin_colors)-1) {
 			skin_color_selected++;
 		} else {
 			skin_color_selected = 0;
 		}
 	}
 	if (keyboard_check_pressed(ord("I"))) {
-		if (eye_color_selected < array_length(eye_colors)-1) {
+		if (eye_color_selected < array_length(global.eye_colors)-1) {
 			eye_color_selected++;
 		} else {
 			eye_color_selected = 0;
@@ -121,6 +121,10 @@ function set_player_states() {
 	ds_map_add(_data, "y", y);
 	ds_map_add(_data, "host_number", global.host_number);
 	ds_map_add(_data, "player_number", global.player_number);
+	ds_map_add(_data, "hair_style_selected", hair_style_selected);
+	ds_map_add(_data, "hair_color_selected", hair_color_selected);
+	ds_map_add(_data, "skin_color_selected", skin_color_selected);
+	ds_map_add(_data, "eye_color_selected", eye_color_selected);
 	ds_map_add(_data, "connected", connected);
 	
 	send_player_over_udp(8080, 1000, _data, MSG_TYPE.SET_PLAYER_STAT);

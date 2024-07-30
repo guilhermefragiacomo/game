@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_join_button",
-    "path":"sprites/spr_join_button/spr_join_button.yy",
+    "name":"spr_play_button",
+    "path":"sprites/spr_play_button/spr_play_button.yy",
   },
   "spriteMaskId":null,
   "visible":true,

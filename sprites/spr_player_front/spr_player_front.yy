@@ -24,9 +24,9 @@
     {"$GMImageLayer":"","%Name":"9c60bb77-f765-4a03-83e8-2d82ad0f05b1","blendMode":0,"displayName":"skin","isLocked":false,"name":"9c60bb77-f765-4a03-83e8-2d82ad0f05b1","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"26d2f2db-0ff6-4549-85ea-e229a606e6b3","blendMode":0,"displayName":"shirt","isLocked":false,"name":"26d2f2db-0ff6-4549-85ea-e229a606e6b3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"2e08da31-7ef8-4df0-a4e2-5a81edbec919","blendMode":0,"displayName":"default","isLocked":false,"name":"2e08da31-7ef8-4df0-a4e2-5a81edbec919","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"1e8c1aef-9bb7-4b5e-ac3d-8a687778c8f0","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"1e8c1aef-9bb7-4b5e-ac3d-8a687778c8f0","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"1e8c1aef-9bb7-4b5e-ac3d-8a687778c8f0","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"1e8c1aef-9bb7-4b5e-ac3d-8a687778c8f0","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"f212227f-95c9-4084-b0e7-09021181122d","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"f212227f-95c9-4084-b0e7-09021181122d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
-    {"$GMImageLayer":"","%Name":"83427339-01d9-4b15-8d29-cf4592dfe557","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"83427339-01d9-4b15-8d29-cf4592dfe557","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
+    {"$GMImageLayer":"","%Name":"83427339-01d9-4b15-8d29-cf4592dfe557","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"83427339-01d9-4b15-8d29-cf4592dfe557","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_player_front",
   "nineSlice":{

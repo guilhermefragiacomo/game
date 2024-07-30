@@ -1,6 +1,6 @@
 {
   "$GMSprite":"",
-  "%Name":"spr_join_button",
+  "%Name":"spr_join_button_old",
   "bboxMode":0,
   "bbox_bottom":43,
   "bbox_left":27,
@@ -21,19 +21,19 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"44b0c127-3e28-423d-8033-575c6fb558f5","blendMode":0,"displayName":"default","isLocked":false,"name":"44b0c127-3e28-423d-8033-575c6fb558f5","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_join_button",
+  "name":"spr_join_button_old",
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"buttons",
-    "path":"folders/Sprites/buttons.yy",
+    "name":"button_old",
+    "path":"folders/Sprites/buttons/button_old.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"",
-    "%Name":"spr_join_button",
+    "%Name":"spr_join_button_old",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_join_button",
+    "name":"spr_join_button_old",
     "playback":1,
     "playbackSpeed":0.0,
     "playbackSpeedType":0,
@@ -69,7 +69,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8fd89bd0-4542-49e4-8928-707480bceaa3","path":"sprites/spr_join_button/spr_join_button.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8fd89bd0-4542-49e4-8928-707480bceaa3","path":"sprites/spr_join_button_old/spr_join_button_old.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"6c21d481-586a-4ea5-a210-3a96cfdb22fd","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

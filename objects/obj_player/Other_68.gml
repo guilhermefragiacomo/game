@@ -6,7 +6,7 @@ if (async_load[? "size"] > 0) {
 	var _response = json_decode(_message_id);
 	
 	if (ds_map_find_value(_response, "type") == MSG_TYPE.GET_PLAYER_STAT) {
-		show_debug_message("< " + _message_id);
+		//show_debug_message("< " + _message_id);
 		var _player_stat = ds_map_find_value(_response, "player_stat");
 		if (!is_this_our_player) {
 			if (_player_stat != -4) {
@@ -16,14 +16,18 @@ if (async_load[? "size"] > 0) {
 					move_y = ds_map_find_value(_player_stat, "move_y");
 					x = ds_map_find_value(_player_stat, "x");
 					y = ds_map_find_value(_player_stat, "y");
+					hair_style_selected = ds_map_find_value(_player_stat, "hair_style_selected");
+					hair_color_selected = ds_map_find_value(_player_stat, "hair_color_selected");
+					skin_color_selected = ds_map_find_value(_player_stat, "skin_color_selected");
+					eye_color_selected = ds_map_find_value(_player_stat, "eye_color_selected");
 				}
 			} else {
-				show_debug_message("\n\ndeletei alguem\n\n");
+				show_debug_message("deletando player");
 				instance_destroy();
 			}
 		}
 	}
-	
+	/*
 	if (ds_map_find_value(_response, "type") == MSG_TYPE.DISCONNECT) {
 		show_debug_message("< " + _message_id);
 		show_debug_message("\nRecebi a requisição disconnect\n");
@@ -34,4 +38,5 @@ if (async_load[? "size"] > 0) {
 			}
 		}
 	}
+	*/
 }	

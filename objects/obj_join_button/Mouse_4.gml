@@ -1,1 +1,1 @@
-room_goto(rm_join_lobby);
+room_goto(rm_player_creation);
