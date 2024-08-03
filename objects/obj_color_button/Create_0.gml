@@ -1,0 +1,1 @@
+img_index = 0;

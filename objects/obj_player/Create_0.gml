@@ -1,11 +1,11 @@
 event_inherited();
 
-hair_style_selected = 0;
-hair_color_selected = 4;
+hair_style_selected = global.hair_selected;
+hair_color_selected = global.hair_color_selected;
 
-skin_color_selected = 6;
+skin_color_selected = global.skin_color_selected;
 
-eye_color_selected = 4;
+eye_color_selected = global.eye_color_selected;
 
 
 

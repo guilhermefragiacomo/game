@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"buttons",
-    "path":"folders/Sprites/buttons.yy",
+    "path":"folders/Sprites/GUI/buttons.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

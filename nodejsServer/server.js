@@ -105,6 +105,7 @@ function get_hosts(data, rinfo) {
 }
 
 function join_host(data, rinfo) {
+    console.log("joino");
     var number_of_player = 0;
     for (var i = 0; i < hosts[data.host_number].length; i++) {
         if (hosts[data.host_number][i].player_number > number_of_player) {

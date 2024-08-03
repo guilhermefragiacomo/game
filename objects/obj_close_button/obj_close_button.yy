@@ -11,8 +11,8 @@
   "name":"obj_close_button",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"GUI",
+    "path":"folders/Objetos/GUI.yy",
   },
   "parentObjectId":null,
   "persistent":false,
