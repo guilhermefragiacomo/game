@@ -23,7 +23,7 @@
   ],
   "name":"spr_house_grass_overlay",
   "nineSlice":null,
-  "origin":7,
+  "origin":9,
   "parent":{
     "name":"houses",
     "path":"folders/Sprites/houses.yy",
@@ -76,7 +76,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":224,
-    "yorigin":512,
+    "yorigin":448,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

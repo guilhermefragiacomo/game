@@ -1,6 +1,4 @@
-//draw_self();
-draw_text(x,y, "x " + string(move_x * spd));
-draw_text(x,y+20, "y " + string(move_y * spd));
+draw_text(x,y+16, "player " + string(player_number));
 
 switch (player_state) {
 	case PLAYER_STATES.STAND_FRONT:
@@ -11,7 +9,6 @@ switch (player_state) {
 		draw_sprite_ext(spr_player_front_eye_colorless,0,x,y,1,1,0,global.eye_colors[eye_color_selected],1);
 		draw_sprite_ext(spr_player_front_leggings,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_shirt,0,x,y,1,1,0,c_white,1);
-		//draw_sprite_ext(spr_player_front_skin_colorless,0,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		if (skin_color_selected != 6) {
 			draw_sprite_ext(spr_player_front_skin_colorless,0,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		} else {
@@ -24,7 +21,6 @@ switch (player_state) {
 		draw_sprite_ext(spr_player_back_boots,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_leggings,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_shirt,0,x,y,1,1,0,c_white,1);
-		//draw_sprite_ext(spr_player_back_skin_colorless,0,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		if (skin_color_selected != 6) {
 			draw_sprite_ext(spr_player_back_skin_colorless,0,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		} else {
@@ -39,7 +35,6 @@ switch (player_state) {
 		draw_sprite_ext(spr_player_side_eye_colorless,0,x,y,image_xscale,1,0,global.eye_colors[eye_color_selected],1);
 		draw_sprite_ext(spr_player_side_leggings,0,x,y,image_xscale,1,0,c_white,1);
 		draw_sprite_ext(spr_player_side_shirt,0,x,y,image_xscale,1,0,c_white,1);
-		//draw_sprite_ext(spr_player_side_skin_colorless,0,x,y,image_xscale,1,0,global.skin_colors[skin_color_selected],1);
 		if (skin_color_selected != 6) {
 			draw_sprite_ext(spr_player_side_skin_colorless,0,x,y,image_xscale,1,0,global.skin_colors[skin_color_selected],1);
 		} else {
@@ -53,7 +48,6 @@ switch (player_state) {
 		draw_sprite_ext(spr_player_front_walking_eye_colorless,-1,x,y,1,1,0,global.eye_colors[eye_color_selected],1);
 		draw_sprite_ext(spr_player_front_walking_leggings,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_walking_shirt,-1,x,y,1,1,0,c_white,1);
-		//draw_sprite_ext(spr_player_front_walking_skin_colorless,-1,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		if (skin_color_selected != 6) {
 			draw_sprite_ext(spr_player_front_walking_skin_colorless,-1,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		} else {
@@ -66,7 +60,6 @@ switch (player_state) {
 		draw_sprite_ext(spr_player_back_walking_boots,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_walking_leggings,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_walking_shirt,-1,x,y,1,1,0,c_white,1);
-		//draw_sprite_ext(spr_player_back_walking_skin_colorless,-1,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		if (skin_color_selected != 6) {
 			draw_sprite_ext(spr_player_back_walking_skin_colorless,-1,x,y,1,1,0,global.skin_colors[skin_color_selected],1);
 		} else {
@@ -81,7 +74,6 @@ switch (player_state) {
 		draw_sprite_ext(spr_player_side_walking_eye_colorless,-1,x,y,image_xscale,1,0,global.eye_colors[eye_color_selected],1);
 		draw_sprite_ext(spr_player_side_walking_leggings,-1,x,y,image_xscale,1,0,c_white,1);
 		draw_sprite_ext(spr_player_side_walking_shirt,-1,x,y,image_xscale,1,0,c_white,1);
-		//draw_sprite_ext(spr_player_side_walking_skin_colorless,-1,x,y,image_xscale,1,0,global.skin_colors[skin_color_selected],1);
 		if (skin_color_selected != 6) {
 			draw_sprite_ext(spr_player_side_walking_skin_colorless,-1,x,y,image_xscale,1,0,global.skin_colors[skin_color_selected],1);
 		} else {

@@ -2,34 +2,6 @@ function input_check(){
 	move_x = (keyboard_check(ord("D")) - keyboard_check(ord("A"))) * spd;
 	move_y = (keyboard_check(ord("S")) - keyboard_check(ord("W"))) * spd;
 	
-	if (keyboard_check_pressed(ord("K"))) {
-		if (hair_style_selected < array_length(global.hair_styles_front_walk)-1) {
-			hair_style_selected++;
-		} else {
-			hair_style_selected = 0;
-		}
-	}
-	if (keyboard_check_pressed(ord("J"))) {
-		if (hair_color_selected < array_length(global.hair_colors)-1) {
-			hair_color_selected++;
-		} else {
-			hair_color_selected = 0;
-		}
-	}
-	if (keyboard_check_pressed(ord("U"))) {
-		if (skin_color_selected < array_length(global.skin_colors)-1) {
-			skin_color_selected++;
-		} else {
-			skin_color_selected = 0;
-		}
-	}
-	if (keyboard_check_pressed(ord("I"))) {
-		if (eye_color_selected < array_length(global.eye_colors)-1) {
-			eye_color_selected++;
-		} else {
-			eye_color_selected = 0;
-		}
-	}
 	if (move_x == 0) {
 		move_x = (keyboard_check(vk_right) - keyboard_check(vk_left)) * spd;
 	}
@@ -77,7 +49,7 @@ function movement_animation () {
 }
 
 function collision() {
-	if(place_meeting(x + move_x, y, obj_wall)) {
+	if(place_meeting(x + move_x, y, obj_wall)){
 		path_delete(my_path);
 		my_path = path_add();
 		while(!place_meeting(x + sign(move_x), y, obj_wall))
@@ -85,6 +57,38 @@ function collision() {
 			x += sign(move_x);
 		}
 		move_x = 0;
+	}
+	var _instx = instance_place(x + move_x, y, obj_walk_through);
+	if(_instx){
+		path_delete(my_path);
+		my_path = path_add();
+		if (y < _instx.y) {
+			move_x = 0;	
+		}
+	}
+	
+	if (move_y < 0) {
+		var _inst = instance_place(x, y + move_y, obj_walk_through);
+		if (_inst) {
+			path_delete(my_path);
+			my_path = path_add();
+			if (y + move_y <= _inst.y) {
+				move_y = 0;
+			}
+		}
+	} else {
+		if (move_y > 0) {
+			var _inst = instance_place(x, y + move_y, obj_walk_through);
+			if (_inst) {
+				if (y + move_y >= _inst.bbox_top) {
+					if (y + move_y < _inst.y) {
+						path_delete(my_path);
+						my_path = path_add();
+						move_y = 0;
+					}
+				}
+			}
+		}
 	}
 	
 	last_x = x;
