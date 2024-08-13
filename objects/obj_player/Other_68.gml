@@ -22,7 +22,6 @@ if (async_load[? "size"] > 0) {
 					eye_color_selected = ds_map_find_value(_player_stat, "eye_color_selected");
 				}
 			} else {
-				show_debug_message("deletando player");
 				instance_destroy();
 			}
 		}

@@ -1,4 +1,4 @@
-draw_text(x,y+16, "player " + string(player_number));
+draw_text(x,y+16, string(global.player_name));
 
 switch (player_state) {
 	case PLAYER_STATES.STAND_FRONT:
@@ -18,6 +18,7 @@ switch (player_state) {
 		image_xscale = 1;
 		break;
 	case PLAYER_STATES.STAND_BACK:
+		draw_sprite_ext(spr_player_back_shade,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_boots,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_leggings,0,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_shirt,0,x,y,1,1,0,c_white,1);
@@ -43,6 +44,7 @@ switch (player_state) {
 		draw_sprite_ext(spr_player_side_hair_styles,hair_style_selected,x,y,image_xscale,1,0,global.hair_colors[hair_color_selected],1);
 		break;
 	case PLAYER_STATES.WALK_FRONT:
+		draw_sprite_ext(spr_player_front_walking_shade,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_walking_boots,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_walking_default,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_front_walking_eye_colorless,-1,x,y,1,1,0,global.eye_colors[eye_color_selected],1);
@@ -57,6 +59,7 @@ switch (player_state) {
 		image_xscale = 1;
 		break;
 	case PLAYER_STATES.WALK_BACK:
+		draw_sprite_ext(spr_player_back_walking_shade,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_walking_boots,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_walking_leggings,-1,x,y,1,1,0,c_white,1);
 		draw_sprite_ext(spr_player_back_walking_shirt,-1,x,y,1,1,0,c_white,1);

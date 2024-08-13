@@ -9,8 +9,8 @@
   "name":"obj_tree",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"deco_objetcs",
+    "path":"folders/Objetos/deco_objetcs.yy",
   },
   "parentObjectId":{
     "name":"obj_walk_through",

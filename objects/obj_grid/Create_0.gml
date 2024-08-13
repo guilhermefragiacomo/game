@@ -6,5 +6,5 @@ v_cells = room_height div player_height;
 
 global.my_grid = mp_grid_create(0,0, h_cells, v_cells, player_width, player_height);
 
-mp_grid_add_instances(global.my_grid, obj_wall, true);
+mp_grid_add_instances(global.my_grid, obj_wall_grid, true);
 

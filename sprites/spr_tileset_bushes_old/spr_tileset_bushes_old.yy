@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"bushes_old",
-    "path":"folders/Sprites/plants/bushes/bushes_old.yy",
+    "path":"folders/Sprites/deco_sprites/plants_sprites/bushes_sprites/bushes_old.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

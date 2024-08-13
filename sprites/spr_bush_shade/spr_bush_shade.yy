@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"bushes",
-    "path":"folders/Sprites/plants/bushes.yy",
+    "name":"bushes_sprites",
+    "path":"folders/Sprites/deco_sprites/plants_sprites/bushes_sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

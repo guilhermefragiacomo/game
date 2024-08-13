@@ -59,29 +59,29 @@ function collision() {
 		move_x = 0;
 	}
 	var _instx = instance_place(x + move_x, y, obj_walk_through);
-	if(_instx){
-		path_delete(my_path);
-		my_path = path_add();
-		if (y < _instx.y) {
-			move_x = 0;	
+	if(_instx && _instx.collision){
+		if (y < _instx.bbox_bottom) {
+			move_x = 0;
+			path_delete(my_path);
+			my_path = path_add();
 		}
 	}
 	
 	if (move_y < 0) {
 		var _inst = instance_place(x, y + move_y, obj_walk_through);
-		if (_inst) {
-			path_delete(my_path);
-			my_path = path_add();
-			if (y + move_y <= _inst.y) {
+		if (_inst && _inst.collision) {
+			if (y + move_y <= _inst.bbox_bottom+2) {
 				move_y = 0;
+				path_delete(my_path);
+				my_path = path_add();
 			}
 		}
 	} else {
 		if (move_y > 0) {
 			var _inst = instance_place(x, y + move_y, obj_walk_through);
-			if (_inst) {
-				if (y + move_y >= _inst.bbox_top) {
-					if (y + move_y < _inst.y) {
+			if (_inst && _inst.collision) {
+				if (y + move_y >= _inst.bbox_top-2) {
+					if (y + move_y <= _inst.bbox_bottom) {
 						path_delete(my_path);
 						my_path = path_add();
 						move_y = 0;

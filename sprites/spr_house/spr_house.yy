@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"houses",
-    "path":"folders/Sprites/houses.yy",
+    "name":"houses_sprites",
+    "path":"folders/Sprites/deco_sprites/houses_sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

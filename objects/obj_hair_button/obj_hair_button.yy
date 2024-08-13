@@ -10,8 +10,8 @@
   "name":"obj_hair_button",
   "overriddenProperties":[],
   "parent":{
-    "name":"GUI",
-    "path":"folders/Objetos/GUI.yy",
+    "name":"GUI_objects",
+    "path":"folders/Objetos/GUI_objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

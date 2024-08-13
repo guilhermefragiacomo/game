@@ -3,13 +3,14 @@
   "%Name":"obj_go_back_button",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":5,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_go_back_button",
   "overriddenProperties":[],
   "parent":{
-    "name":"GUI",
-    "path":"folders/Objetos/GUI.yy",
+    "name":"GUI_objects",
+    "path":"folders/Objetos/GUI_objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

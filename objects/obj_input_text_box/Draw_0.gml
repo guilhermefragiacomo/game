@@ -2,6 +2,7 @@ draw_set_color(#A35909);
 draw_set_font(fnt_gui);
 draw_set_halign(fa_left);
 draw_text_transformed(x,y, keyboard_string, 4,4,0);
+global.player_name = keyboard_string;
 //draw_text_transformed_color()
 //draw_text_ext_transformed_color(x, y, keyboard_string, 1, 180, 4, 4, 0, c_black, c_black, c_black, c_black, 1);
 
