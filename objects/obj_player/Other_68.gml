@@ -20,8 +20,10 @@ if (async_load[? "size"] > 0) {
 					hair_color_selected = ds_map_find_value(_player_stat, "hair_color_selected");
 					skin_color_selected = ds_map_find_value(_player_stat, "skin_color_selected");
 					eye_color_selected = ds_map_find_value(_player_stat, "eye_color_selected");
+					player_name = ds_map_find_value(_player_stat, "player_name");
 				}
 			} else {
+				
 				instance_destroy();
 			}
 		}

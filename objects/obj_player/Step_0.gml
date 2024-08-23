@@ -7,4 +7,10 @@ if (is_this_our_player) {
 	get_player_states();
 }
 
-movement_animation();
+if (is_this_our_player) {
+	if (!global.lock) {
+		movement_animation();
+	}
+} else {
+	movement_animation();
+}

@@ -8,11 +8,24 @@ enum MSG_TYPE{
 	GET_HOSTS,
 	GET_PLAYER_STAT,
 	GET_NEW_PLAYER,
-	CHECK_DISCONNECTED
+	CHECK_DISCONNECTED,
+	GET_MINIGAMES,
+	SET_MINIGAMES,
+	REMOVE_PLAYER_FROM_MINIGAME,
+	START_MINIGAME
 }
 
 global.host_number = noone;
 global.player_number = noone;
+
+global.lock = false;
+
+global.player_limit = 0;
+global.game = -1;
+global.players_in_minigame = [];
+global.show_gui = false;
+global.counter = 0;
+global.minigame_running = false;
 
 global.hair_colors = [
 	c_white,

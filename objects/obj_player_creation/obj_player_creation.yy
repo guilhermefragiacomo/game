@@ -10,8 +10,8 @@
   "name":"obj_player_creation",
   "overriddenProperties":[],
   "parent":{
-    "name":"GUI_objects",
-    "path":"folders/Objetos/GUI_objects.yy",
+    "name":"player_creatin",
+    "path":"folders/Objetos/GUI_objects/player_creatin.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -125,6 +125,7 @@ function set_player_states() {
 	ds_map_add(_data, "y", y);
 	ds_map_add(_data, "host_number", global.host_number);
 	ds_map_add(_data, "player_number", global.player_number);
+	ds_map_add(_data, "player_name", global.player_name);
 	ds_map_add(_data, "hair_style_selected", hair_style_selected);
 	ds_map_add(_data, "hair_color_selected", hair_color_selected);
 	ds_map_add(_data, "skin_color_selected", skin_color_selected);

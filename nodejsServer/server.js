@@ -4,6 +4,13 @@ var server = dgram.createSocket({ type: "udp4", reuseAddr: true });
 
 var data;
 var hosts = [[new player(0, 0, 0, 0, 0, false, 0, 4, 6, 4)], [new player(0, 0, 0, 0, 0, false, 0, 4, 6, 4)]];
+var minigames_list = [];
+
+function minigame(id, players_in_minigame, data) {
+    this.id = id;
+    this.players_in_minigame = players_in_minigame;
+    this.data = data;
+}
 
 const MSG_TYPE = {
     CREATE_HOST: 0,
@@ -13,12 +20,17 @@ const MSG_TYPE = {
     GET_HOSTS: 4,
     GET_PLAYER_STAT: 5,
     GET_NEW_PLAYER: 6,
-    CHECK_DISCONNECTED: 7
+    CHECK_DISCONNECTED: 7,
+    GET_MINIGAMES: 8,
+    SET_MINIGAMES: 9,
+    REMOVE_PLAYER_FROM_MINIGAME: 10,
+    START_MINIGAME: 11
 }
 
-function player(player_number, x, y, move_x, move_y, connected, hair_style_selected, hair_color_selected, skin_color_selected, eye_color_selected) {
+function player(player_number, player_name, x, y, move_x, move_y, connected, hair_style_selected, hair_color_selected, skin_color_selected, eye_color_selected) {
     this.x = x;
     this.y = y;
+    this.player_name = player_name;
     this.player_number = player_number;
     this.move_x = move_x;
     this.move_y = move_y;
@@ -30,7 +42,7 @@ function player(player_number, x, y, move_x, move_y, connected, hair_style_selec
 }
 
 server.on("listening", function () {
-    disconnected_players();
+    repeat();
 });
 server.on("message", function (msg, rinfo) {
     data = JSON.parse(msg);
@@ -57,6 +69,18 @@ server.on("message", function (msg, rinfo) {
         case MSG_TYPE.GET_NEW_PLAYER:
             get_players(data, rinfo);
             break;
+        case MSG_TYPE.SET_MINIGAMES:
+            set_minigames(data, rinfo);
+            break;
+        case MSG_TYPE.GET_MINIGAMES:
+            get_minigames(data, rinfo);
+            break;
+        case MSG_TYPE.REMOVE_PLAYER_FROM_MINIGAME:
+            remove_player_from_minigame(data, rinfo);
+            break;
+        case MSG_TYPE.START_MINIGAME:
+            start_minigame(data, rinfo);
+            break;
         default:
             break;
     }
@@ -67,6 +91,7 @@ function set_player_stat(data, rinfo) {
         if (hosts[data.host_number][i].player_number == data.player_number) {
             hosts[data.host_number][i].move_x = data.move_x;
             hosts[data.host_number][i].move_y = data.move_y;
+            hosts[data.host_number][i].player_name = data.player_name;
             hosts[data.host_number][i].x = data.x;
             hosts[data.host_number][i].y = data.y;
             hosts[data.host_number][i].hair_style_selected = data.hair_style_selected;
@@ -82,7 +107,7 @@ function set_player_stat(data, rinfo) {
 
 function create_host(data, rinfo) {
     var hostNumber = hosts.length;
-    hosts.push([new player(0, 0, 0, 0, 0, false, 0, 4, 6, 4)]);
+    hosts.push([new player(0, "", 0, 0, 0, 0, false, 0, 4, 6, 4)]);
 
     data.hostNumber = hostNumber;
     data.playerNumber = 0;
@@ -112,7 +137,7 @@ function join_host(data, rinfo) {
             number_of_player = hosts[data.host_number][i].player_number;
         }
     }
-    hosts[data.host_number].push(new player(number_of_player + 1, 250, 680, 0, 0, true, 0, 4, 6, 4));
+    hosts[data.host_number].push(new player(number_of_player + 1, "", 250, 680, 0, 0, true, 0, 4, 6, 4));
     data.player_number = number_of_player + 1;
     server.send(JSON.stringify(data), rinfo.port, rinfo.address);
     console.log("\njoin host - ");
@@ -156,7 +181,7 @@ function disconnect_player(data, rinfo) {
 }
 */
 
-async function disconnected_players() {
+async function repeat() {
     //await sleep(5000);
     for (var i = 0; i < hosts.length; i++) {
         for (var j = 0; j < hosts[i].length; j++) {
@@ -173,10 +198,79 @@ async function disconnected_players() {
         }
     }
 
-    console.log("\ndisconnected_players - ");
+    console.log("\ndisconnected players - ");
     console.table(hosts);
 
-    disconnected_players();
+    repeat();
+}
+
+function set_minigames(data, rinfo) {
+    console.log("set (antes) - ")
+    console.log(minigames_list);
+    if (minigames_list.length == 0) {
+        minigames_list.push(new minigame(data.minigame_id, data.players_in_minigame, null));
+    } else {
+        var found = false;
+        for (var i = 0; i < minigames_list.length; i++) {
+            if (minigames_list[i].id == data.minigame_id) {
+                for (var j = 0; j < data.players_in_minigame; j++) {
+                    if (!minigames_list[i].players_in_minigame.includes(data.players_in_minigame[j])) {
+                        if (Number.isInteger(data.players_in_minigame[j])) {
+                            minigames_list[i].players_in_minigame.push(data.players_in_minigame[j]);
+                        }
+                    }
+                }
+                data.players_in_minigame = minigames_list[i].players_in_minigame;
+                found = true;
+            }
+        }
+        if (!found) {
+            minigames_list.push(new minigame(data.minigame_id, data.players_in_minigame, null));
+        }
+    }
+    server.send(JSON.stringify(data), rinfo.port);
+    console.log("set - ");
+    console.log(minigames_list);
+    console.log("\n");
+}
+
+function get_minigames(data, rinfo) {
+    for (var i = 0; i < minigames_list.length; i++) {
+        if (minigames_list[i].id == data.minigame_id) {
+            data.players_in_minigame = minigames_list[i].players_in_minigame;
+        }
+    }
+    console.log("get - ");
+    console.log(minigames_list);
+    console.log("\n");
+    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+}
+
+function remove_player_from_minigame(data, rinfo) {
+    for (var i = 0; i < minigames_list.length; i++) {
+        if (minigames_list[i].id == data.minigame_id) {
+            for (var j = 0; j < minigames_list[i].players_in_minigame.length; j++) {
+                if (minigames_list[i].players_in_minigame[j] == data.player_number) {
+                    minigames_list[i].players_in_minigame.splice(j, 1);
+                }
+            }
+        }
+    }
+    console.log("remove from minigame - ");
+    console.log(minigames_list);
+    console.log("\n");
+}
+
+function start_minigame(data, rinfo) {
+    for (var i = 0; i < minigames_list.length; i++) {
+        if (minigames_list[i].id == data.minigame_id) {
+            data.players_in_minigame = minigames_list[i].players_in_minigame;
+        }
+    }
+    console.log("start - ");
+    console.log(minigames_list);
+    console.log("\n");
+    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
 }
 
 function sleep(ms) {

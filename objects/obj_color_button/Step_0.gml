@@ -3,7 +3,6 @@ switch (global.option_selected) {
 		if (global.hair_color_selected == color) {
 			if (img_index == 0) {
 				img_index = 1;
-				show_debug_message("cor selecionada " + string(color));
 			}
 		} else {
 			if (img_index == 1) {
@@ -15,7 +14,6 @@ switch (global.option_selected) {
 		if (global.skin_color_selected == color) {
 			if (img_index == 0) {
 				img_index = 1;
-				show_debug_message("cor selecionada " + string(color));
 			}
 		} else {
 			if (img_index == 1) {
@@ -27,7 +25,6 @@ switch (global.option_selected) {
 		if (global.eye_color_selected == color) {
 			if (img_index == 0) {
 				img_index = 1;
-				show_debug_message("cor selecionada " + string(color));
 			}
 		} else {
 			if (img_index == 1) {

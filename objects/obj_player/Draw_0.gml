@@ -1,4 +1,4 @@
-draw_text(x,y+16, string(global.player_name));
+draw_text(x,y+16, string(player_name));
 
 switch (player_state) {
 	case PLAYER_STATES.STAND_FRONT:

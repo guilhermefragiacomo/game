@@ -1,0 +1,1 @@
+draw_sprite(spr_tic_tac_toe_background, 0, 0, 0);
