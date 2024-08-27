@@ -192,6 +192,19 @@ async function repeat() {
     for (var i = 0; i < hosts.length; i++) {
         for (var j = 0; j < hosts[i].length; j++) {
             if (!hosts[i][j].connected) {
+                for (var k = 0; k < minigames_list.length; k++) {
+                    if ((minigames_list[k].id / 10) - 1 == i) {
+                        for (var o = 0; o < minigames_list[k].players_in_minigame.length; o++) {
+                            if (minigames_list[k].players_in_minigame[o] == hosts[i][j].player_number) {
+                                console.log("\natualizando a minigame_list - ");
+                                console.log(minigames_list);
+                                minigames_list[k].players_in_minigame.splice(o, 1);
+                                console.log("\ndepois");
+                                console.log(minigames_list);
+                            }
+                        }
+                    }
+                }
                 console.log("deletando player " + hosts[i][j].player_number + " de host - " + i);
                 hosts[i].splice(j, 1);
             }
@@ -265,12 +278,36 @@ function start_minigame(data, rinfo) {
     for (var i = 0; i < minigames_list.length; i++) {
         if (minigames_list[i].id == data.minigame_id) {
             data.players_in_minigame = minigames_list[i].players_in_minigame;
+            if (minigames_list[i].data == null) {
+                minigames_list[i].data = { id: Math.floor(Math.random() * minigames_list[i].players_in_minigame.length), data: [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]], time: 30 };
+                timer(minigames_list[i]);
+            }
         }
     }
     console.log("start - ");
     console.log(minigames_list);
     console.log("\n");
     server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+}
+
+async function timer(minigame) {
+    var id = minigame.data.id;
+    var count = minigame.data.time;
+    for (var k = 0; k < count; k++) {
+        await sleep(1000);
+
+        for (var i = 0; i < minigames_list.length; i++) {
+            if (minigames_list[i].id == minigame.id) {
+                if (id == minigames_list[i].data.id) {
+                    minigames_list[i].data.time -= 1;
+                } else {
+                    count = 0;
+                }
+            }
+        }
+        console.log("\ntimer - ");
+        console.log(minigames_list);
+    }
 }
 
 function sleep(ms) {

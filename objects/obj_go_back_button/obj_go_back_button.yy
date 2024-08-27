@@ -12,7 +12,10 @@
     "name":"player_creatin",
     "path":"folders/Objetos/GUI_objects/player_creatin.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_button",
+    "path":"objects/obj_button/obj_button.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

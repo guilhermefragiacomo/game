@@ -8,11 +8,9 @@ if (async_load[? "size"] > 0) {
 	if (ds_map_find_value(_response, "type") == MSG_TYPE.SET_MINIGAMES || ds_map_find_value(_response, "type") == MSG_TYPE.GET_MINIGAMES) {
 		show_debug_message("< " + _message_id);
 		var _minigames = ds_map_find_value(_response, "players_in_minigame");
-		show_debug_message("antes - " + string(global.players_in_minigame));
 		if (ds_map_find_value(_response, "minigame_id") == minigame_id) {
 			if (global.game == minigame_id) {
 				for (var _i = 0; _i < ds_list_size(_minigames); _i++) {
-					show_debug_message("ar - " + string(ds_list_find_value(_minigames, _i)));
 					if (!array_contains(global.players_in_minigame, ds_list_find_value(_minigames, _i))) {
 						array_push(global.players_in_minigame, ds_list_find_value(_minigames, _i));
 					}
@@ -24,7 +22,6 @@ if (async_load[? "size"] > 0) {
 				}
 			}
 		}
-		show_debug_message("depois - " + string(global.players_in_minigame));
 	}
 	
 	if (ds_map_find_value(_response, "type") == MSG_TYPE.START_MINIGAME) {
@@ -37,9 +34,10 @@ if (async_load[? "size"] > 0) {
 					global.minigame_running = true;
 					var _inst = instance_create_depth(1, 1, -200, obj_fade_gui);
 					var _game = instance_create_depth(0,0, -200, obj_tic_tac_toe_game);
+				} else {
+					start = true;
 				}
 			}
 		}
-		show_debug_message("depois - " + string(global.players_in_minigame));
 	}
 }	
