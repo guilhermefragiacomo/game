@@ -251,6 +251,7 @@ function get_minigames(data, rinfo) {
     for (var i = 0; i < minigames_list.length; i++) {
         if (minigames_list[i].id == data.minigame_id) {
             data.players_in_minigame = minigames_list[i].players_in_minigame;
+            data.info = minigames_list[i].data;
         }
     }
     console.log("get - ");
@@ -267,6 +268,9 @@ function remove_player_from_minigame(data, rinfo) {
                     minigames_list[i].players_in_minigame.splice(j, 1);
                 }
             }
+            if (minigames_list[i].players_in_minigame.length == 0) {
+                minigames_list[i].data = null;
+            }
         }
     }
     console.log("remove from minigame - ");
@@ -275,12 +279,13 @@ function remove_player_from_minigame(data, rinfo) {
 }
 
 function start_minigame(data, rinfo) {
+    console.log(data);
     for (var i = 0; i < minigames_list.length; i++) {
         if (minigames_list[i].id == data.minigame_id) {
             data.players_in_minigame = minigames_list[i].players_in_minigame;
             if (minigames_list[i].data == null) {
-                minigames_list[i].data = { id: Math.floor(Math.random() * minigames_list[i].players_in_minigame.length), data: [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]], time: 30 };
-                timer(minigames_list[i]);
+                minigames_list[i].data = { id: minigames_list[i].players_in_minigame[Math.floor(Math.random() * minigames_list[i].players_in_minigame.length)], data: [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]], time: data.time };
+                minigame_timer(minigames_list[i]);
             }
         }
     }
@@ -290,23 +295,38 @@ function start_minigame(data, rinfo) {
     server.send(JSON.stringify(data), rinfo.port, rinfo.address);
 }
 
-async function timer(minigame) {
-    var id = minigame.data.id;
+async function minigame_timer(minigame) {
     var count = minigame.data.time;
+    var time = count;
     for (var k = 0; k < count; k++) {
         await sleep(1000);
 
         for (var i = 0; i < minigames_list.length; i++) {
             if (minigames_list[i].id == minigame.id) {
-                if (id == minigames_list[i].data.id) {
+                if (minigame.data.id == minigames_list[i].data.id) {
                     minigames_list[i].data.time -= 1;
                 } else {
-                    count = 0;
+                    count = -4;
                 }
             }
         }
         console.log("\ntimer - ");
         console.log(minigames_list);
+    }
+    next_minigame_round(minigame, time);
+}
+
+function next_minigame_round(minigame, time) {
+    for (var i = 0; i < minigames_list.length; i++) {
+        if (minigames_list[i].id == minigame.id) {
+            if (minigames_list[i].data.id == minigames_list[i].players_in_minigame[minigames_list[i].players_in_minigame.length - 1]) {
+                minigames_list[i].data.id = minigames_list[i].players_in_minigame[0];
+            } else {
+                minigames_list[i].data.id++;
+            }
+            minigames_list[i].data.time = time;
+            minigame_timer(minigame);
+        }
     }
 }
 
