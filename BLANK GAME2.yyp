@@ -23,6 +23,7 @@
     {"$GMFolder":"","%Name":"GUI_objects","folderPath":"folders/Objetos/GUI_objects.yy","name":"GUI_objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"player_creatin","folderPath":"folders/Objetos/GUI_objects/player_creatin.yy","name":"player_creatin","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"tic_tac_toe","folderPath":"folders/Objetos/GUI_objects/tic_tac_toe.yy","name":"tic_tac_toe","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"minigames","folderPath":"folders/Objetos/minigames.yy","name":"minigames","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Particle Systems","folderPath":"folders/Particle Systems.yy","name":"Particle Systems","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sequências","folderPath":"folders/Sequências.yy","name":"Sequências","resourceType":"GMFolder","resourceVersion":"2.0",},

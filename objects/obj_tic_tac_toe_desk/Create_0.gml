@@ -8,3 +8,5 @@ round_time = 30;
 
 should_i_get_new_players = false;
 start = false;
+
+info = [-1, -1, -1, -1, -1, -1, -1, -1, -1];

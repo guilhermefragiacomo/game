@@ -17,8 +17,8 @@
   "name":"obj_tic_tac_toe_desk",
   "overriddenProperties":[],
   "parent":{
-    "name":"deco_objetcs",
-    "path":"folders/Objetos/deco_objetcs.yy",
+    "name":"minigames",
+    "path":"folders/Objetos/minigames.yy",
   },
   "parentObjectId":{
     "name":"obj_par_objects",

@@ -6,10 +6,11 @@ var data;
 var hosts = [[new player(0, 0, 0, 0, 0, false, 0, 4, 6, 4)], [new player(0, 0, 0, 0, 0, false, 0, 4, 6, 4)]];
 var minigames_list = [];
 
-function minigame(id, players_in_minigame, data) {
+function minigame(id, players_in_minigame, data, player_win) {
     this.id = id;
     this.players_in_minigame = players_in_minigame;
     this.data = data;
+    this.player_win = player_win;
 }
 
 const MSG_TYPE = {
@@ -163,24 +164,6 @@ function get_players(data, rinfo) {
     server.send(JSON.stringify(data), rinfo.port, rinfo.address);
 }
 
-/*
-function disconnect_player(data, rinfo) {
-    for (var i = 0; i < hosts[data.host_number].length; i++) {
-        if (hosts[data.host_number][i].player_number == data.player_number) {
-            console.log("\n\nesse é o cara que eu desconectei: " + hosts[data.host_number][i].player_number + "\n");
-            hosts[data.host_number].splice(i, 1);
-        }
-    }
-    console.table(hosts);
-    for (var i = 0; i < hosts.length; i++) {
-        for (var j = 0; j < hosts[i].length; j++) {
-            console.log("host - " + i + " player - " + hosts[i][j].player_number)
-        }
-    }
-    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
-}
-*/
-
 async function repeat() {
     //await sleep(5000);
     for (var i = 0; i < hosts.length; i++) {
@@ -221,7 +204,7 @@ function set_minigames(data, rinfo) {
     console.log("set (antes) - ")
     console.log(minigames_list);
     if (minigames_list.length == 0) {
-        minigames_list.push(new minigame(data.minigame_id, data.players_in_minigame, null));
+        minigames_list.push(new minigame(data.minigame_id, data.players_in_minigame, null, data.player_win));
     } else {
         var found = false;
         for (var i = 0; i < minigames_list.length; i++) {
@@ -234,6 +217,14 @@ function set_minigames(data, rinfo) {
                     }
                 }
                 data.players_in_minigame = minigames_list[i].players_in_minigame;
+                minigames_list[i].player_win = data.player_win;
+                if (data.info != null) {
+                    minigames_list[i].data.data = data.info;
+                    data.info = minigames_list[i].data;
+                    console.log("setando info - ");
+                    console.log(minigames_list[i].data.data);
+                    next_minigame_round(minigames_list[i], data.time);
+                }
                 found = true;
             }
         }
@@ -252,6 +243,7 @@ function get_minigames(data, rinfo) {
         if (minigames_list[i].id == data.minigame_id) {
             data.players_in_minigame = minigames_list[i].players_in_minigame;
             data.info = minigames_list[i].data;
+            data.player_win = minigames_list[i].player_win;
         }
     }
     console.log("get - ");
@@ -284,7 +276,7 @@ function start_minigame(data, rinfo) {
         if (minigames_list[i].id == data.minigame_id) {
             data.players_in_minigame = minigames_list[i].players_in_minigame;
             if (minigames_list[i].data == null) {
-                minigames_list[i].data = { id: minigames_list[i].players_in_minigame[Math.floor(Math.random() * minigames_list[i].players_in_minigame.length)], data: [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]], time: data.time };
+                minigames_list[i].data = { id: minigames_list[i].players_in_minigame[Math.floor(Math.random() * minigames_list[i].players_in_minigame.length)], data: data.info, time: data.time };
                 minigame_timer(minigames_list[i]);
             }
         }
@@ -297,35 +289,60 @@ function start_minigame(data, rinfo) {
 
 async function minigame_timer(minigame) {
     var count = minigame.data.time;
+    var id = minigame.data.id;
     var time = count;
     for (var k = 0; k < count; k++) {
         await sleep(1000);
 
         for (var i = 0; i < minigames_list.length; i++) {
             if (minigames_list[i].id == minigame.id) {
-                if (minigame.data.id == minigames_list[i].data.id) {
-                    minigames_list[i].data.time -= 1;
+                if (minigames_list[i].players_in_minigame.length > 0) {
+                    if (minigames_list[i].player_win == -1 || minigames_list[i].player_win == null) {
+                        if (id == minigames_list[i].data.id) {
+                            console.log("\ntimer - ");
+                            console.log(minigames_list[i]);
+                            console.log(minigames_list[i].data.data);
+                            minigames_list[i].data.time -= 1;
+                        } else {
+                            count = -4;
+                        }
+                    } else {
+                        count = -4;
+                        minigames_list[i].players_in_minigame = [];
+                        minigames_list[i].data = null;
+                        minigames_list[i].player_win = -1;
+                    }
                 } else {
                     count = -4;
                 }
+            } else {
+                count = -4;
             }
         }
-        console.log("\ntimer - ");
-        console.log(minigames_list);
     }
-    next_minigame_round(minigame, time);
+    if (count == k) {
+        next_minigame_round(minigame, time);
+    }
 }
 
 function next_minigame_round(minigame, time) {
     for (var i = 0; i < minigames_list.length; i++) {
         if (minigames_list[i].id == minigame.id) {
-            if (minigames_list[i].data.id == minigames_list[i].players_in_minigame[minigames_list[i].players_in_minigame.length - 1]) {
-                minigames_list[i].data.id = minigames_list[i].players_in_minigame[0];
-            } else {
-                minigames_list[i].data.id++;
+            if (minigames_list[i].players_in_minigame.length > 0) {
+                if (minigames_list[i].player_win == -1 || minigames_list[i].player_win == null) {
+                    if (minigames_list[i].data.id == minigames_list[i].players_in_minigame[minigames_list[i].players_in_minigame.length - 1]) {
+                        minigames_list[i].data.id = minigames_list[i].players_in_minigame[0];
+                    } else {
+                        minigames_list[i].data.id++;
+                    }
+                    minigames_list[i].data.time = time;
+                    minigame_timer(minigame);
+                } else {
+                    minigames_list[i].players_in_minigame = [];
+                    minigames_list[i].data = null;
+                    minigames_list[i].player_win = -1;
+                }
             }
-            minigames_list[i].data.time = time;
-            minigame_timer(minigame);
         }
     }
 }
