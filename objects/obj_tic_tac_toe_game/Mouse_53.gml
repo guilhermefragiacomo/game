@@ -30,6 +30,8 @@ if (window_mouse_get_x() >= 52 && window_mouse_get_x() < 883) {
 								_winner = global.players_in_minigame[1];
 							}
 						}
+						_player_1 = 0;
+						_player_2 = 0;
 					}
 					_player_1 = 0;
 					_player_2 = 0;
@@ -51,6 +53,8 @@ if (window_mouse_get_x() >= 52 && window_mouse_get_x() < 883) {
 									_winner = global.players_in_minigame[1];
 								}
 							}
+							_player_1 = 0;
+							_player_2 = 0;
 						}
 						_player_1 = 0;
 						_player_2 = 0;

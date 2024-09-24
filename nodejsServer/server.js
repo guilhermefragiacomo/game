@@ -197,6 +197,9 @@ async function repeat() {
     console.log("\ndisconnected players - ");
     console.table(hosts);
 
+    console.log("\n minigames list - ");
+    console.log(minigames_list);
+
     repeat();
 }
 
@@ -308,9 +311,13 @@ async function minigame_timer(minigame) {
                         }
                     } else {
                         count = -4;
+                        await sleep(1000)
+                        /*
                         minigames_list[i].players_in_minigame = [];
                         minigames_list[i].data = null;
                         minigames_list[i].player_win = -1;
+                        */
+                        minigames_list.splice(i, 1);
                     }
                 } else {
                     count = -4;
@@ -321,11 +328,11 @@ async function minigame_timer(minigame) {
         }
     }
     if (count == k) {
-        next_minigame_round(minigame, time);
+        await next_minigame_round(minigame, time);
     }
 }
 
-function next_minigame_round(minigame, time) {
+async function next_minigame_round(minigame, time) {
     for (var i = 0; i < minigames_list.length; i++) {
         if (minigames_list[i].id == minigame.id) {
             if (minigames_list[i].players_in_minigame.length > 0) {
@@ -333,14 +340,19 @@ function next_minigame_round(minigame, time) {
                     if (minigames_list[i].data.id == minigames_list[i].players_in_minigame[minigames_list[i].players_in_minigame.length - 1]) {
                         minigames_list[i].data.id = minigames_list[i].players_in_minigame[0];
                     } else {
-                        minigames_list[i].data.id++;
+                        var a_id = minigames_list[i].players_in_minigame.indexOf(minigames_list[i].data.id);
+                        minigames_list[i].data.id = minigames_list[i].players_in_minigame[a_id++];
                     }
                     minigames_list[i].data.time = time;
                     minigame_timer(minigame);
                 } else {
+                    await sleep(1000)
+                    /*
                     minigames_list[i].players_in_minigame = [];
                     minigames_list[i].data = null;
                     minigames_list[i].player_win = -1;
+                    */
+                    minigames_list.splice(i, 1);
                 }
             }
         }
