@@ -4,11 +4,11 @@ for (var _i = 0; _i < 3; _i++) {
 	for (var _k = 0; _k < 3; _k++) {
 		if (array_length(global.players_in_minigame) > 0) {
 			if (array_get(info, _i * 3 + _k) == global.players_in_minigame[0]) {
-				draw_sprite(spr_close_button, 0, 52 + (_i * 277), 48 + (_k * 207));
+				draw_sprite(spr_tic_tac_toe_x, 0, 52 + (_i * 277), 48 + (_k * 207));
 			} else {
 				if (array_length(global.players_in_minigame) > 1) {
 					if (array_get(info, _i * 3 + _k) == global.players_in_minigame[1]) {
-						draw_sprite(spr_go_back_button, 0, 52 + (_i * 277), 48 + (_k * 207));
+						draw_sprite(spr_tic_tac_toe_o, 0, 52 + (_i * 277), 48 + (_k * 207));
 					}
 				}
 			}

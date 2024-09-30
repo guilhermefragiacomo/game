@@ -31,7 +31,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"gui","filters":[],"listItems":[],"multiselect":false,"name":"gui","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"obj_close_button","varType":5,},
+    {"$GMObjectProperty":"","%Name":"gui","filters":[],"listItems":[],"multiselect":false,"name":"gui","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"obj_close_button","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

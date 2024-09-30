@@ -71,11 +71,11 @@ if (window_mouse_get_x() >= 52 && window_mouse_get_x() < 883) {
 									_winner = global.players_in_minigame[0];
 								}
 							} else {
-								if (array_get(info, 2) == global.players_in_minigame[0]) {
+								if (array_get(info, 2) == global.players_in_minigame[1]) {
 									_player_2++;
-									if (array_get(info, 4) == global.players_in_minigame[0]) {
+									if (array_get(info, 4) == global.players_in_minigame[1]) {
 										_player_2++;
-										if (array_get(info, 6) == global.players_in_minigame[0]) {
+										if (array_get(info, 6) == global.players_in_minigame[1]) {
 											_player_2++;
 										}
 									}
@@ -99,11 +99,11 @@ if (window_mouse_get_x() >= 52 && window_mouse_get_x() < 883) {
 										_winner = global.players_in_minigame[0];
 									}
 								} else {
-									if (array_get(info, 0) == global.players_in_minigame[0]) {
+									if (array_get(info, 0) == global.players_in_minigame[1]) {
 										_player_2++;
-										if (array_get(info, 4) == global.players_in_minigame[0]) {
+										if (array_get(info, 4) == global.players_in_minigame[1]) {
 											_player_2++;
-											if (array_get(info, 8) == global.players_in_minigame[0]) {
+											if (array_get(info, 8) == global.players_in_minigame[1]) {
 												_player_2++;
 											}
 										}
@@ -118,6 +118,19 @@ if (window_mouse_get_x() >= 52 && window_mouse_get_x() < 883) {
 				}
 				if (_winner != -1) {
 					player_win = _winner;
+				}
+				if (_winner == -1) {
+					if (is_array(info)) {
+						var _found = false;
+						for (var _k = 0; _k < array_length(info); _k++) {
+							if (array_get(info, _k) == -1) {
+								_found = true;
+							}
+						}
+						if (_found == false) {
+							_winner = noone;
+						}
+					}
 				}
 	
 				ds_map_add(_data, "minigame_id", global.game);
