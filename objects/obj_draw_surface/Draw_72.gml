@@ -1,5 +1,5 @@
 if (!surface_exists(surf)){
- surf = surface_create(320, 180);
+ surf = surface_create(x_size, y_size);
  buffer_set_surface(buffer, surf, 0);
 }
 
