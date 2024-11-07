@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":6,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"minigame_objects",
+    "path":"folders/Sprites/minigame_objects.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

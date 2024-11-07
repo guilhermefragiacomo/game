@@ -30,3 +30,4 @@ if (_number_of_player_in_level > 0) {
 }
 draw_text_transformed(1085,420, string(time), 2.5, 2.5, 0);
 draw_set_color(c_white);
+draw_set_font(fnt_server);

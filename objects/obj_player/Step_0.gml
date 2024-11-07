@@ -9,7 +9,9 @@ if (is_this_our_player) {
 
 if (is_this_our_player) {
 	if (!global.lock) {
-		movement_animation();
+		if (global.gui_depth == 0) {
+			movement_animation();
+		}
 	}
 } else {
 	movement_animation();

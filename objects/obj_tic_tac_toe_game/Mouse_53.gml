@@ -1,8 +1,8 @@
-if (window_mouse_get_x() >= 52 && window_mouse_get_x() < 883) {
-	if (window_mouse_get_y() >= 48 && window_mouse_get_y() < 669) {
+if (device_mouse_x_to_gui(0) >= 52 && device_mouse_x_to_gui(0) < 883) {
+	if (device_mouse_y_to_gui(0) >= 48 && device_mouse_y_to_gui(0) < 669) {
 		if (player_id_round == global.player_number) {
-			var _xx = floor((window_mouse_get_x()-52) / 277);
-			var _yy = floor((window_mouse_get_y()-48) / 207);
+			var _xx = floor((device_mouse_x_to_gui(0)-52) / 277);
+			var _yy = floor((device_mouse_y_to_gui(0)-48) / 207);
 			if (array_get(info, _xx * 3 + _yy) == -1) {
 				
 				array_set(info, _xx * 3 + _yy, global.player_number);

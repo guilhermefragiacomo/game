@@ -2,15 +2,15 @@
   "$GMObject":"",
   "%Name":"obj_fade_gui",
   "eventList":[
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_fade_gui",
   "overriddenProperties":[],
   "parent":{
     "name":"tic_tac_toe",
-    "path":"folders/Objetos/GUI_objects/tic_tac_toe.yy",
+    "path":"folders/Objetos/minigames/tic_tac_toe.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -20,6 +20,8 @@ global.player_number = noone;
 
 global.lock = false;
 
+global.gui_depth = 0;
+
 global.player_limit = 0;
 global.game = -1;
 global.players_in_minigame = [];
