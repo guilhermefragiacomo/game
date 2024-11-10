@@ -1,4 +1,19 @@
 var dgram = require("dgram");
+/*
+var supa = require('@supabase/supabase-js')
+
+const supabase = supa.createClient('https://hmnfiioyqinxcmsljqkn.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtbmZpaW95cWlueGNtc2xqcWtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwOTk2MDcsImV4cCI6MjA0NjY3NTYwN30.3H1oJoyMsX4uDg-crUzLOUyxTIzvq65E9wHYO9hildk", {
+  db: { schema: 'public' }
+})
+
+async function db() {
+    const { db_data, error } = await supabase
+    .from('player_inventory')
+    .select();
+    console.log(db_data);
+}
+db();
+*/
 
 var server = dgram.createSocket({ type: "udp4", reuseAddr: true });
 

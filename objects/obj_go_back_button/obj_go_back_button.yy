@@ -2,8 +2,8 @@
   "$GMObject":"",
   "%Name":"obj_go_back_button",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":5,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":5,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_go_back_button",
@@ -30,7 +30,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"room_to_go","filters":[],"listItems":[],"multiselect":false,"name":"room_to_go","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_menu","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"room_to_go","filters":[],"listItems":[],"multiselect":false,"name":"room_to_go","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_menu","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

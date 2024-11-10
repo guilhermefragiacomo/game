@@ -1,5 +1,5 @@
 {
-  "$GMTileSet":"v1",
+  "$GMTileSet":"",
   "%Name":"tileset_stones",
   "autoTileSets":[],
   "macroPageTiles":{
@@ -25,6 +25,10 @@
   "textureGroupId":{
     "name":"Default",
     "path":"texturegroups/Default",
+  },
+  "tileAnimation":{
+    "FrameData":[0,1,2,],
+    "SerialiseFrameCount":1,
   },
   "tileAnimationFrames":[],
   "tileAnimationSpeed":15.0,

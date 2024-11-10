@@ -2,9 +2,9 @@
   "$GMSprite":"",
   "%Name":"spr_canva_background",
   "bboxMode":0,
-  "bbox_bottom":179,
-  "bbox_left":73,
-  "bbox_right":319,
+  "bbox_bottom":719,
+  "bbox_left":292,
+  "bbox_right":1279,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":180,
+  "height":720,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"3f662049-70ea-48f6-b50b-59f1f39566a3","blendMode":0,"displayName":"default","isLocked":false,"name":"3f662049-70ea-48f6-b50b-59f1f39566a3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -87,5 +87,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":320,
+  "width":1280,
 }

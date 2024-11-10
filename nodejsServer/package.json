@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
     "dgram": "^1.0.1"
   }
 }
