@@ -1,5 +1,5 @@
 show = false;
-global.canva_color_created = c_white;
+global.canva_color_created = c_red;
 
 hover = false;
 

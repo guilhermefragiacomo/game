@@ -32,8 +32,8 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"room_to_go","filters":[],"listItems":[],"multiselect":false,"name":"room_to_go","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_1","varType":5,},
-    {"$GMObjectProperty":"v1","%Name":"local_host_number","filters":[],"listItems":[],"multiselect":false,"name":"local_host_number","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
+    {"$GMObjectProperty":"","%Name":"room_to_go","filters":[],"listItems":[],"multiselect":false,"name":"room_to_go","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_1","varType":5,},
+    {"$GMObjectProperty":"","%Name":"local_host_number","filters":[],"listItems":[],"multiselect":false,"name":"local_host_number","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

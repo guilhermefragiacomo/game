@@ -1,4 +1,18 @@
 draw_self();
+var _close_alpha = 1;
+var _enter_alpha = 1;
+if (device_mouse_x_to_gui(0) >= 456 && device_mouse_x_to_gui(0) <= 507) {
+	if (device_mouse_y_to_gui(0) >= 8 && device_mouse_y_to_gui(0) <= 59) {
+		_close_alpha = 0.5;
+	}
+}
+if (device_mouse_x_to_gui(0) >= 456 && device_mouse_x_to_gui(0) <= 507) {
+	if (device_mouse_y_to_gui(0) >= 132 && device_mouse_y_to_gui(0) <= 183) {
+		_enter_alpha = 0.5;
+	}
+}
+draw_sprite_ext(spr_color_selection_close_canva,1,0,0,1,1,0,c_white,_close_alpha);
+draw_sprite_ext(spr_color_selection_enter_canva,1,0,-132,1,1,0,c_white,_enter_alpha);
 
 var _brush_size = prop * brush_size;
 

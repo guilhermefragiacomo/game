@@ -1,19 +1,9 @@
 var dgram = require("dgram");
-/*
-var supa = require('@supabase/supabase-js')
 
-const supabase = supa.createClient('https://hmnfiioyqinxcmsljqkn.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtbmZpaW95cWlueGNtc2xqcWtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwOTk2MDcsImV4cCI6MjA0NjY3NTYwN30.3H1oJoyMsX4uDg-crUzLOUyxTIzvq65E9wHYO9hildk", {
-  db: { schema: 'public' }
-})
+var supa = require('@supabase/supabase-js');
 
-async function db() {
-    const { db_data, error } = await supabase
-    .from('player_inventory')
-    .select();
-    console.log(db_data);
-}
-db();
-*/
+
+auth();
 
 var server = dgram.createSocket({ type: "udp4", reuseAddr: true });
 
@@ -40,7 +30,10 @@ const MSG_TYPE = {
     GET_MINIGAMES: 8,
     SET_MINIGAMES: 9,
     REMOVE_PLAYER_FROM_MINIGAME: 10,
-    START_MINIGAME: 11
+    START_MINIGAME: 11,
+    UPDATE_PLAYER_VALUE: 12,
+    SAVE_PLAYER: 13,
+    SAVE_PAINTING: 14
 }
 
 function player(player_number, player_name, x, y, move_x, move_y, connected, hair_style_selected, hair_color_selected, skin_color_selected, eye_color_selected) {
@@ -97,6 +90,14 @@ server.on("message", function (msg, rinfo) {
         case MSG_TYPE.START_MINIGAME:
             start_minigame(data, rinfo);
             break;
+        case MSG_TYPE.UPDATE_PLAYER_VALUE:
+            update_player_value(data, rinfo);
+            break;
+        case MSG_TYPE.SAVE_PLAYER:
+            save_player(data, rinfo);
+            break;
+        case MSG_TYPE.SAVE_PAINTING:
+            save_painting(data,rinfo);
         default:
             break;
     }
@@ -359,6 +360,57 @@ async function next_minigame_round(minigame, time) {
             }
         }
     }
+}
+
+async function save_player(data, rinfo) {
+    console.log(data);
+    try {
+        for (var i = 0; i < hosts[data.host_number].length; i++) {
+            if (hosts[data.host_number][i].player_number == data.player_number) {
+                const { error } = await supabase
+                .from('player_inventory')
+                .insert({
+                    id: hosts[data.host_number][i].player_number, 
+                    created_at: ((new Date()).toISOString()).toLocaleString('pt-BR'),
+                    username: hosts[data.host_number][i].player_name,
+                    password: "root",
+                    hair_style: hosts[data.host_number][i].hair_style_selected,
+                    hair_color: hosts[data.host_number][i].hair_color_selected,
+                    skin_color: hosts[data.host_number][i].skin_color_selected,
+                    eye_color: hosts[data.host_number][i].eye_color_selected
+                });
+                console.log(error)
+                console.log("executed");
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
+    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+}
+
+async function save_painting(data,rinfo) {
+    try {
+        for (var i = 0; i < hosts[data.host_number].length; i++) {
+            if (hosts[data.host_number][i].player_number == data.player_number) {
+                const { error } = await supabase
+                .from('player_paintings')
+                .insert({
+                    created_at: ((new Date()).toISOString()).toLocaleString('pt-BR'),
+                    player_id: hosts[data.host_number][i].player_name,
+                    painting: data.painting
+                });
+                console.log(error);
+                console.log("executed");
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+function update_player_value(data, rinfo) {
+
 }
 
 function sleep(ms) {

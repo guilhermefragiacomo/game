@@ -3,6 +3,9 @@ global.canva_holding_color = false;
 global.canva_brush_size = 3;
 global.gui_depth = 1;
 
+global.minigame_running = true;
+var _inst = instance_create_depth(1, 1, -200, obj_fade_gui);
+
 instance_create_depth(96,204,-300,obj_color_button_canva, 
 {
 	color : c_black,
