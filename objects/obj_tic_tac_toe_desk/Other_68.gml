@@ -32,7 +32,6 @@ if (async_load[? "size"] > 0) {
 				if (ds_list_size(_minigames) == player_limit) {
 					global.show_gui = false;
 					global.minigame_running = true;
-					var _inst = instance_create_depth(1, 1, -200, obj_fade_gui);
 					var _game = instance_create_depth(0,0, -200, obj_tic_tac_toe_game);
 				} else {
 					start = true;

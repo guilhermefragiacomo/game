@@ -1,9 +1,20 @@
+const { error } = require("console");
 var dgram = require("dgram");
 
-var supa = require('@supabase/supabase-js');
+var mysql = require('mysql');
 
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  port: 3306,
+  database: "game"
+});
 
-auth();
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 var server = dgram.createSocket({ type: "udp4", reuseAddr: true });
 
@@ -148,21 +159,25 @@ function get_hosts(data, rinfo) {
 
 function join_host(data, rinfo) {
     console.log("joino");
-    var number_of_player = 0;
-    for (var i = 0; i < hosts[data.host_number].length; i++) {
-        if (hosts[data.host_number][i].player_number > number_of_player) {
-            number_of_player = hosts[data.host_number][i].player_number;
-        }
-    }
-    hosts[data.host_number].push(new player(number_of_player + 1, "", 250, 680, 0, 0, true, 0, 4, 6, 4));
-    data.player_number = number_of_player + 1;
-    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
-    console.log("\njoin host - ");
-    console.table(hosts);
-    for (var i = 0; i < hosts.length; i++) {
-        for (var j = 0; j < hosts[i].length; j++) {
-            console.log("host - " + i + " player - " + hosts[i][j].player_number)
-        }
+    try {
+        sql = "SELECT id FROM player WHERE username = '"+ data.player_name + "' && id = '" + data.player_number + "'";
+        con.query(sql, function (err, result) {
+            for (var i = 0; i < hosts[data.host_number].length; i++) {
+                if (hosts[data.host_number][i].player_number == result[0].id) {
+                    throw new Error('player already exists in this host');
+                }
+            }
+            hosts[data.host_number].push(new player(result[0].id, data.player_name, 250, 680, 0, 0, true, 0, 4, 6, 4));
+            data.player_number = result[0].id;
+            data.joined = true;
+
+            server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+            console.table(hosts);
+        });
+    } catch (e) {
+        console.log(e)
+        server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+        console.table(hosts);
     }
 }
 
@@ -363,45 +378,39 @@ async function next_minigame_round(minigame, time) {
 }
 
 async function save_player(data, rinfo) {
-    console.log(data);
     try {
-        for (var i = 0; i < hosts[data.host_number].length; i++) {
-            if (hosts[data.host_number][i].player_number == data.player_number) {
-                const { error } = await supabase
-                .from('player_inventory')
-                .insert({
-                    id: hosts[data.host_number][i].player_number, 
-                    created_at: ((new Date()).toISOString()).toLocaleString('pt-BR'),
-                    username: hosts[data.host_number][i].player_name,
-                    password: "root",
-                    hair_style: hosts[data.host_number][i].hair_style_selected,
-                    hair_color: hosts[data.host_number][i].hair_color_selected,
-                    skin_color: hosts[data.host_number][i].skin_color_selected,
-                    eye_color: hosts[data.host_number][i].eye_color_selected
+        var sql = "INSERT INTO player (username, psw) VALUES ('" + data.player_name + "', '" + data.password + "')";
+        con.query(sql, function (err, result) {
+            console.log(err);
+            
+            var sql = "SELECT id FROM player WHERE username = '" + data.player_name + "'";
+            con.query(sql, function (err, result) {
+                console.log(err);
+                data.player_number = result[0].id;
+
+                var sql = "INSERT INTO player_statistics (id, hair_style, hair_color, skin_color, eye_color) VALUES (" + result[0].id + ", '" + data.hair_style + "', '" + data.hair_color + "', '" + data.skin_color + "', '" + data.eye_color + "')";
+                con.query(sql, function (err, result) {
+                    console.log(err);
+                    data.saved = true;
+                    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
                 });
-                console.log(error)
-                console.log("executed");
-            }
-        }
+            });
+        });
+        
+        
     } catch (e) {
         console.log(e);
     }
-    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
 }
 
 async function save_painting(data,rinfo) {
     try {
         for (var i = 0; i < hosts[data.host_number].length; i++) {
             if (hosts[data.host_number][i].player_number == data.player_number) {
-                const { error } = await supabase
-                .from('player_paintings')
-                .insert({
-                    created_at: ((new Date()).toISOString()).toLocaleString('pt-BR'),
-                    player_id: hosts[data.host_number][i].player_name,
-                    painting: data.painting
-                });
-                console.log(error);
-                console.log("executed");
+
+                    //player_id: hosts[data.host_number][i].player_name,
+                    //painting: data.painting
+
             }
         }
     } catch (e) {
@@ -411,6 +420,20 @@ async function save_painting(data,rinfo) {
 
 function update_player_value(data, rinfo) {
 
+}
+
+function login(data, rinfo) {
+    try {
+        var sql = "SELECT id FROM player WHERE username = '" + data.player_name + "' && password = '" + data.password + "'";
+        con.query(sql, function (err, result) {
+            console.log(result);
+            //data.player_number = result[0].id;
+            //data.hair_style = 
+            //server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+        });
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 function sleep(ms) {

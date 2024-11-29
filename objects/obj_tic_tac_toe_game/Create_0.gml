@@ -7,3 +7,5 @@ player_id_round = -1;
 info = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
 
 player_win = -1;
+
+fade = instance_create_depth(1, 1, -200, obj_fade_gui);

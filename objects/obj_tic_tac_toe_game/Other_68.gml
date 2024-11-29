@@ -28,14 +28,16 @@ if (async_load[? "size"] > 0) {
 				}
 			}
 			if (array_contains(global.players_in_minigame, player_win) || player_id_round == -4) {
-				instance_destroy();
 				global.minigame_running = false;
 				global.lock = false;
 				global.player_limit = 0;
 				global.game = -1;
 				global.players_in_minigame = [];
 				global.counter = 0;
+				global.gui_depth = 0;
 				show_debug_message(string(player_win) + " venceu");
+				instance_destroy(fade);
+				instance_destroy();
 			}
 		}
 	}

@@ -23,7 +23,7 @@ if (global.gui_depth == 1) {
 if (global.gui_depth == 1) {
 	if (device_mouse_x_to_gui(0) >= 612 && device_mouse_x_to_gui(0) < 991) {
 		if (device_mouse_y_to_gui(0) >= 644 && device_mouse_y_to_gui(0) <= 715) {
-			draw_sprite_ext(spr_finish_button,0,612,644, 1, 1, 0, c_white, 0.5);
+			draw_sprite_ext(spr_finish_button,0,612,644, 1, 1, 0, c_white, 0.2);
 			if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) {
 				
 			}

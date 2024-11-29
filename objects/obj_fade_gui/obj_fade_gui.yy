@@ -9,8 +9,8 @@
   "name":"obj_fade_gui",
   "overriddenProperties":[],
   "parent":{
-    "name":"tic_tac_toe",
-    "path":"folders/Objetos/minigames/tic_tac_toe.yy",
+    "name":"minigames",
+    "path":"folders/Objetos/minigames.yy",
   },
   "parentObjectId":null,
   "persistent":false,

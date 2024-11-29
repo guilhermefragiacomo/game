@@ -1,1 +1,10 @@
-room_goto(rm_join_lobby);
+var _data = ds_map_create();
+ds_map_add(_data, "player_number", noone);
+ds_map_add(_data, "player_name", global.player_name);
+ds_map_add(_data, "password", "root");
+ds_map_add(_data, "saved", saved);
+ds_map_add(_data, "hair_style", global.hair_selected);
+ds_map_add(_data, "hair_color", global.hair_color_selected);
+ds_map_add(_data, "skin_color", global.skin_color_selected);
+ds_map_add(_data, "eye_color", global.eye_color_selected);
+send_player_over_udp(8080, 175, _data, MSG_TYPE.SAVE_PLAYER);
