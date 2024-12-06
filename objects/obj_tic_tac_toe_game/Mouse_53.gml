@@ -140,6 +140,7 @@ if (device_mouse_x_to_gui(0) >= 52 && device_mouse_x_to_gui(0) < 883) {
 				ds_map_add(_data, "player_win", _winner);
 	
 				send_player_over_udp(8080, 1000, _data, MSG_TYPE.SET_MINIGAMES);
+				ds_map_destroy(_data);
 			}
 		}
 	}

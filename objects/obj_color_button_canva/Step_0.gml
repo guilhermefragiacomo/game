@@ -32,7 +32,7 @@ if (hover) {
 		}
 	}
 }
-
+/*
 if (global.gui_depth > 1) {
 	if (below = true) {
 		is_visible = false;
@@ -40,7 +40,7 @@ if (global.gui_depth > 1) {
 } else {
 	is_visible = true;
 }
-
+*/
 if (mouse_check_button_released(mb_left) || mouse_check_button_released(mb_right)) {
 	created = false;
 }

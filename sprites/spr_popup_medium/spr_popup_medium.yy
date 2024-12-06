@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":720,
+  "height":324,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"692edb92-6fec-40d7-8d41-70ec148767b3","blendMode":0,"displayName":"buttons","isLocked":false,"name":"692edb92-6fec-40d7-8d41-70ec148767b3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
@@ -96,5 +96,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":1280,
+  "width":516,
 }

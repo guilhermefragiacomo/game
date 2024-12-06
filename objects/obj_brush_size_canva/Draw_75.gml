@@ -11,8 +11,8 @@ if (device_mouse_x_to_gui(0) >= 456 && device_mouse_x_to_gui(0) <= 507) {
 		_enter_alpha = 0.5;
 	}
 }
-draw_sprite_ext(spr_color_selection_close_canva,1,0,0,1,1,0,c_white,_close_alpha);
-draw_sprite_ext(spr_color_selection_enter_canva,1,0,-132,1,1,0,c_white,_enter_alpha);
+draw_sprite_ext(spr_popup_close,1,0,0,1,1,0,c_white,_close_alpha);
+draw_sprite_ext(spr_popup_enter,1,0,-132,1,1,0,c_white,_enter_alpha);
 
 var _brush_size = prop * brush_size;
 

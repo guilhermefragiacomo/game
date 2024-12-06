@@ -1,4 +1,3 @@
-const { error } = require("console");
 var dgram = require("dgram");
 
 var mysql = require('mysql');
@@ -65,53 +64,59 @@ server.on("listening", function () {
     repeat();
 });
 server.on("message", function (msg, rinfo) {
-    data = JSON.parse(msg);
-    //console.log("< " + String(msg));
-    switch (data.type) {
-        case MSG_TYPE.SET_PLAYER_STAT:
-            set_player_stat(data, rinfo);
-            break;
-        case MSG_TYPE.CREATE_HOST:
-            create_host(data, rinfo);
-            break;
-        case MSG_TYPE.STOP_HOST:
-            stop_host(data, rinfo);
-            break;
-        case MSG_TYPE.GET_HOSTS:
-            get_hosts(data, rinfo);
-            break;
-        case MSG_TYPE.JOIN_HOST:
-            join_host(data, rinfo);
-            break;
-        case MSG_TYPE.GET_PLAYER_STAT:
-            get_player_stat(data, rinfo);
-            break;
-        case MSG_TYPE.GET_NEW_PLAYER:
-            get_players(data, rinfo);
-            break;
-        case MSG_TYPE.SET_MINIGAMES:
-            set_minigames(data, rinfo);
-            break;
-        case MSG_TYPE.GET_MINIGAMES:
-            get_minigames(data, rinfo);
-            break;
-        case MSG_TYPE.REMOVE_PLAYER_FROM_MINIGAME:
-            remove_player_from_minigame(data, rinfo);
-            break;
-        case MSG_TYPE.START_MINIGAME:
-            start_minigame(data, rinfo);
-            break;
-        case MSG_TYPE.UPDATE_PLAYER_VALUE:
-            update_player_value(data, rinfo);
-            break;
-        case MSG_TYPE.SAVE_PLAYER:
-            save_player(data, rinfo);
-            break;
-        case MSG_TYPE.SAVE_PAINTING:
-            save_painting(data,rinfo);
-        default:
-            break;
+    try {
+        //console.log('Raw message received:', msg.toString());
+        data = JSON.parse(msg.toString());
+
+        switch (data.type) {
+            case MSG_TYPE.SET_PLAYER_STAT:
+                set_player_stat(data, rinfo);
+                break;
+            case MSG_TYPE.CREATE_HOST:
+                create_host(data, rinfo);
+                break;
+            case MSG_TYPE.STOP_HOST:
+                stop_host(data, rinfo);
+                break;
+            case MSG_TYPE.GET_HOSTS:
+                get_hosts(data, rinfo);
+                break;
+            case MSG_TYPE.JOIN_HOST:
+                join_host(data, rinfo);
+                break;
+            case MSG_TYPE.GET_PLAYER_STAT:
+                get_player_stat(data, rinfo);
+                break;
+            case MSG_TYPE.GET_NEW_PLAYER:
+                get_players(data, rinfo);
+                break;
+            case MSG_TYPE.SET_MINIGAMES:
+                set_minigames(data, rinfo);
+                break;
+            case MSG_TYPE.GET_MINIGAMES:
+                get_minigames(data, rinfo);
+                break;
+            case MSG_TYPE.REMOVE_PLAYER_FROM_MINIGAME:
+                remove_player_from_minigame(data, rinfo);
+                break;
+            case MSG_TYPE.START_MINIGAME:
+                start_minigame(data, rinfo);
+                break;
+            case MSG_TYPE.UPDATE_PLAYER_VALUE:
+                update_player_value(data, rinfo);
+                break;
+            case MSG_TYPE.SAVE_PLAYER:
+                save_player(data, rinfo);
+                break;
+            case MSG_TYPE.SAVE_PAINTING:
+                save_painting(data,rinfo);
+            default:
+                break;
+        }
+    } catch (err) {
+        console.error('Error parsing JSON:', err.message);
     }
+    //console.log("< " + String(msg));
 });
 
 function set_player_stat(data, rinfo) {
@@ -405,14 +410,31 @@ async function save_player(data, rinfo) {
 
 async function save_painting(data,rinfo) {
     try {
-        for (var i = 0; i < hosts[data.host_number].length; i++) {
-            if (hosts[data.host_number][i].player_number == data.player_number) {
-
-                    //player_id: hosts[data.host_number][i].player_name,
-                    //painting: data.painting
-
+        var sql = "SELECT id, packet, painting FROM player_paintings WHERE player_id = " + data.player_number + " ORDER BY created_at DESC";
+        con.query(sql, function (err, result) {
+            console.log(err);
+            if (result[0] == null || result[0].packet == 6) {
+                if (data.packet == 1) {
+                    var sql = "INSERT INTO player_paintings (player_id, painting, packet) VALUES (" + data.player_number + ", '" + data.painting + "', '" + data.packet + "')";
+                    con.query(sql, function (err, result) {
+                        console.log("Insert");
+                        console.log(err);
+                        data.success = true;
+                        server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+                    });
+                }
+            } else {
+                if (result[0].packet == data.packet-1) {
+                    var sql = "UPDATE player_paintings SET packet = " + (data.packet) + ", painting = '" + (result[0].painting.concat(data.painting)) + "' WHERE id = " + result[0].id;
+                    con.query(sql, function (err, result) {
+                        console.log("Updated");
+                        console.log(err);
+                        data.success = true;
+                        server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+                    });
+                }
             }
-        }
+        });
     } catch (e) {
         console.log(e);
     }

@@ -21,6 +21,7 @@ if (global.gui_depth == 0) {
 			ds_map_add(_data, "player_win", -1);
 	
 			send_player_over_udp(8080, 1000, _data, MSG_TYPE.SET_MINIGAMES);
+			ds_map_destroy(_data);
 		}
 		
 		should_i_get_new_players = true;

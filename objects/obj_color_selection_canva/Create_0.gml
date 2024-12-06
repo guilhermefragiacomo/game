@@ -8,6 +8,9 @@ if (global.canva_color_created != c_white) {
 	val = 255;
 }
 
+close = instance_create_depth(456, 8, -300, obj_popup_close);
+enter = instance_create_depth(456, 264, -330, obj_popup_enter);
+
 prop = 355/254;
 prop2 = 355/255;
 

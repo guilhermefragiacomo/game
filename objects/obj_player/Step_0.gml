@@ -22,4 +22,5 @@ if (keyboard_check_pressed(ord("F"))) {
 	ds_map_add(_data, "host_number", global.host_number);
 	ds_map_add(_data, "player_number", player_number);
 	send_player_over_udp(8080, 300, _data, MSG_TYPE.SAVE_PLAYER);
+	ds_map_destroy(_data);
 }

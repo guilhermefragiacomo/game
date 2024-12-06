@@ -114,6 +114,7 @@ function get_player_states() {
 	ds_map_add(_data, "player_number", player_number);
 	ds_map_add(_data, "player_stat", noone);
 	send_player_over_udp(8080, 300, _data, MSG_TYPE.GET_PLAYER_STAT);
+	ds_map_destroy(_data);
 }
 
 function set_player_states() {
@@ -133,4 +134,5 @@ function set_player_states() {
 	ds_map_add(_data, "connected", connected);
 	
 	send_player_over_udp(8080, 1000, _data, MSG_TYPE.SET_PLAYER_STAT);
+	ds_map_destroy(_data);
 }

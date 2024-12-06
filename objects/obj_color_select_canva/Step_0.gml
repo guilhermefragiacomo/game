@@ -11,14 +11,14 @@ if (hover) {
 		}
 		if (mouse_check_button_released(mb_left)) {
 			if (created) {
-				instance_create_depth(0,0, -300, obj_color_selection_canva)
+				instance_create_layer(0,0, layer_get_id("Layer2"), obj_color_selection_canva)
 				created = false;
 				global.gui_depth = 2;
 			}
 		} else {
 			if (mouse_check_button_released(mb_right)) {
 				if (created) {
-					instance_create_depth(0,0, -300, obj_color_selection_canva)
+					instance_create_layer(0,0, layer_get_id("Layer2"), obj_color_selection_canva)
 					created = false;
 					global.gui_depth = 2;
 				}
