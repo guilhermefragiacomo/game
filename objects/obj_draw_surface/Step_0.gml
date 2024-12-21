@@ -43,5 +43,6 @@ if (save.popup_response == 1) {
 		instance_destroy();
 		global.gui_depth = 0;
 		global.minigame_running = false;
+		global.lock = false;
 	}
 }

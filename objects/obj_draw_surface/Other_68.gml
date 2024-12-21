@@ -26,6 +26,7 @@ if (async_load[? "size"] > 0) {
 			instance_destroy(select_button);
 			instance_destroy();
 			global.minigame_running = false;
+			global.lock = false;
 		} 
 	}
 }	

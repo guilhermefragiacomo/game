@@ -11,8 +11,8 @@
   "name":"obj_popup_close",
   "overriddenProperties":[],
   "parent":{
-    "name":"GUI_objects",
-    "path":"folders/Objetos/GUI_objects.yy",
+    "name":"popup",
+    "path":"folders/Objetos/GUI_objects/popup.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -32,6 +32,8 @@ global.show_gui = false;
 global.counter = 0;
 global.minigame_running = false;
 
+global.font = font_add_sprite_ext(spr_custom_font,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\'\"!@#$%&*(){}[]´~^:;.,<>/?°º-_+=§|\\¹²³£¢¬áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛãõÃÕçÇ", false, 0);
+
 global.hair_colors = [
 	c_white,
 	#777777,

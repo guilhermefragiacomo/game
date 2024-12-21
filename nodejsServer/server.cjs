@@ -164,20 +164,28 @@ function get_hosts(data, rinfo) {
 
 function join_host(data, rinfo) {
     console.log("joino");
+    console.log(data);
     try {
-        sql = "SELECT id FROM player WHERE username = '"+ data.player_name + "' && id = '" + data.player_number + "'";
+        sql = "SELECT id FROM player WHERE username = '"+ data.player_name + "' AND id = " + data.player_number + "";
         con.query(sql, function (err, result) {
-            for (var i = 0; i < hosts[data.host_number].length; i++) {
-                if (hosts[data.host_number][i].player_number == result[0].id) {
-                    throw new Error('player already exists in this host');
+            console.log(err);
+            console.log(result);
+            if (result != []) {
+                found = false;
+                for (var i = 0; i < hosts[data.host_number].length; i++) {
+                    if (hosts[data.host_number][i].player_number == result[0].id) {
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    hosts[data.host_number].push(new player(result[0].id, data.player_name, 250, 680, 0, 0, true, 0, 4, 6, 4));
+                    data.player_number = result[0].id;
+                    data.joined = true;
+
+                    server.send(JSON.stringify(data), rinfo.port, rinfo.address);
+                    console.table(hosts);
                 }
             }
-            hosts[data.host_number].push(new player(result[0].id, data.player_name, 250, 680, 0, 0, true, 0, 4, 6, 4));
-            data.player_number = result[0].id;
-            data.joined = true;
-
-            server.send(JSON.stringify(data), rinfo.port, rinfo.address);
-            console.table(hosts);
         });
     } catch (e) {
         console.log(e)

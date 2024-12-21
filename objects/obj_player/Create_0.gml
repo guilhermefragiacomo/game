@@ -29,3 +29,6 @@ last_y = y;
 connected = true;
 
 image_speed = 0.13;
+
+input_form = id;
+popup_response = 0;

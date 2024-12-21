@@ -10,8 +10,8 @@
   "name":"obj_popup",
   "overriddenProperties":[],
   "parent":{
-    "name":"GUI_objects",
-    "path":"folders/Objetos/GUI_objects.yy",
+    "name":"popup",
+    "path":"folders/Objetos/GUI_objects/popup.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,6 +31,7 @@
     {"$GMObjectProperty":"v1","%Name":"sprite","filters":[],"listItems":[],"multiselect":false,"name":"sprite","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_popup_small","path":"sprites/spr_popup_small/spr_popup_small.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_popup_small","varType":5,},
     {"$GMObjectProperty":"v1","%Name":"position","filters":[],"listItems":[],"multiselect":false,"name":"position","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"ok","filters":[],"listItems":[],"multiselect":false,"name":"ok","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"true","varType":3,},
+    {"$GMObjectProperty":"v1","%Name":"title","filters":[],"listItems":[],"multiselect":false,"name":"title","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

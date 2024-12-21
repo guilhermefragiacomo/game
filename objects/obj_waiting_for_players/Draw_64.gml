@@ -1,11 +1,17 @@
 draw_set_alpha(1);
 
 draw_sprite(spr_waiting_for_players,0,0,0);
-
+/*
 draw_set_color(#A35909);
 draw_set_font(fnt_gui);
 draw_text_transformed(1085,145, "Esperando", 2.5, 2.5, 0);
 draw_text_transformed(1085,185, "outros jogadores", 2.5, 2.5, 0);
+*/
+draw_set_font(global.font);
+draw_set_color(c_white);
+draw_text_transformed(1085, 145, "Esperando", 0.55, 0.55, 0);
+draw_text_transformed(1085, 185, "outros jogadores", 0.55, 0.55, 0);
+
 draw_set_color(c_white);
 
 image_speed = 0.2;
